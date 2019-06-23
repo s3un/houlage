@@ -1,0 +1,126 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles%}
+{% block content%}
+<div class="cars">
+    <div class="carwall">
+        <p>Your convinence our pride.</p>
+    </div>
+    <div class="wallcontent">
+
+<div class="container">
+   <div class="carsform">
+        <form action="{% url 'load_auto' %}" id="carform" method="post" enctype="multipart/form-data" novalidate>
+        	{% csrf_token%}
+        	
+			<div id="vehicleForm" class="form-group carsform2" data-veh-url="{% url 'load_brand'%}">
+			<label>Vehicle Type</label>
+			<select class="form-control" id="id_vehicl" name="vehicle" required>
+				<option>----------</option>
+				{% for veh in vehic%}
+				<option value="{{veh.tag}}">{{veh.tag}}</option>
+				{% endfor %}
+			</select>
+			</div>
+
+			<div id="BrandForm" class="form-group carsform2" data-model-url="{% url 'load_model' %}">
+				<label>Brand</label>
+				<div>	
+					<select class="form-control" id="id_brand" name="Brand" required>
+						
+					</select>
+				</div>
+			</div>
+
+			<div class="form-group carsform2">
+			<label>Model</label>
+			<select class="form-control" id="id_model" name="Model">
+				<option></option>
+			</select>
+			</div>
+
+                    <button type="submit" class="btn btn-danger carbutton2">Search</button>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid carslog">
+    <div class="row">
+        <div class="col-md-12 complete">
+        {% for auto in automobile%}	
+            <div class="col-md-4">
+                <div class="cf">
+                    <img class="bottom" src="{{auto.image.url}}" />
+                    <img class="top" src="{{auto.image.url}}" />
+                </div>
+                <div class="carname">
+                    <p>{{auto.Brands}} {{auto.Model}}</p>
+                </div>
+                <div class="carname">
+                    <p>&#8358;{{auto.Cost}}/hr</p>
+                </div>
+               <center><a href=" {% url 'auto_details' pk=auto.pk %} "><button class="btn carbutton btn-danger">Hire</button></a></center>
+            </div>
+           {% endfor %}
+        </div>
+		
+    </div>
+</div>
+
+{% endblock%}
+{% block scripts%}
+
+<script src="{% static 'js/jquery.js' %}"></script> 
+  <script>
+    $("#id_vehicl").change(function () {
+      var url = $("#vehicleForm").attr("data-veh-url");  // get the url of the `load_cities` view
+      var Vehicle_tag = $(this).val();  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'Vehicle': Vehicle_tag       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_brand").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+
+    $("#id_brand").change(function () {
+      var url = $("#BrandForm").attr("data-model-url");  // get the url of the `load_cities` view
+      var brand_tag = $(this).val();
+      var vehicle= $(".brand_c").attr("data-vehicle");  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'brand_tag': brand_tag,
+          'vehicle':vehicle,       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+      
+
+    });
+
+    var frm=$("#carform");
+    frm.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          $('.complete').html(data)
+
+        }
+      });
+      return false;
+    });
+  </script>
+
+{% endblock%}

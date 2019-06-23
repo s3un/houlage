@@ -1,0 +1,133 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles%}
+{% load crispy_forms_tags %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+{% endblock%}
+{% block content%}
+<div class="container selfcar "style="padding-top:70px;">
+    <div class="column">
+        <div class="col-md-12">
+            <div class="col-md-6">
+               <div class="topic-img">
+                   <img style="margin-top: 100px" id="bottom" src="{{details.image.url}}">
+               </div>
+            </div>
+
+            <div class="col-md-6 quickhire">
+
+                    <div class="topic-header">
+                       <h2>{{details.Brands}} {{details.Model}}</h2>
+                    </div>
+
+                    <div class="topic-body">
+                        <p>In a good condition, brandnew, available for both hire and pickup.</p>
+                        {% if details.Air_Condition is True%}
+                        <p>Air-conditioned, neat.</p>
+                        {% endif %}
+
+                    </div>
+                <div class="col-md-6">
+                    <div class="statusbar col-md-12">
+                        <h4 style=" color: #b0b0b0;">Status</h4>
+                        {% if details.Availability is True%}
+                        <p><li class="la la-circle">Available</li></p>
+                        {% else %}
+                        <p><li class="la la-circle">Not Available</li></p>
+                        {% endif%}
+                    </div>
+				</div>
+				
+					
+				{% if RentInfo.exists%}
+                <div class="col-md-12">
+                   {% for rent in RentInfo %} 
+                    <div class="picktoreturn col-md-6">
+                        <h4 style="color: #b0b0b0;">Hire On</h4>
+                        
+                            
+                                {{rent.pickup_date}}
+                            
+                        
+                    </div>
+                    
+                    <div class="picktoreturn col-md-6">
+                        <h4 style="color: #b0b0b0;">Return On</h4>
+                        
+                            <div class="form-group">
+                                {{rent.return_date}}
+                            </div>
+                    </div>
+               
+                </div>
+				<center><a href="{% url 'remove_rent' rpk=rent.pk %}"><button class="btn btn-danger personalbutton">Remove from Bookings?</button></a></center>
+                 {% endfor%}
+				{% else %}
+                <form class="formedit"method="POST" action="{% url 'rent' %} ">
+                    {% csrf_token %}
+                     <!--   <div class="anothertopic col-md-6">
+                        <h4 style=" color: #b0b0b0;">Specification</h4>
+                        
+                        <div class="topicform">
+                            <div class="form-group topicinput col-md-6">
+                                    <input class="form-control" type="text" placeholder="quantity">
+                                </div>
+                            
+                        </div>
+                    </div>-->
+                <div class="col-md-12">
+                    
+                    <div class="picktoreturn col-md-6">
+                        <h4 style="color: #b0b0b0;">Hire On</h4>
+                        
+                            
+                                {{dateForm.pickup_date|as_crispy_field}}
+                            
+                        
+                    </div>
+                    
+                    <div class="picktoreturn col-md-6">
+                        <h4 style="color: #b0b0b0;">Return On</h4>
+                        
+                            <div class="form-group">
+                                {{dateForm.return_date|as_crispy_field}}
+                            </div>
+                    </div>
+               
+                </div>
+				<input type="hidden" name="automobile" value="{{details.pk}}">
+                    <center><button class="btn btn-danger personalbutton">Add to Bookings</button></center>
+				{% endif %}  
+			</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
+{%block scripts %}
+<script src="{% static 'js/jquery.datetimepicker.full.min.js' %}"></script>
+<script type="text/javascript">
+    $(function() {
+        $("#id_pickup_date").datetimepicker({
+            format:'Y-m-d H:i',
+            minDate:'0',
+            maxDate:'+1970/01/07',
+            minTime:0,
+           
+        });
+        $("#id_return_date").datetimepicker({
+            format:'Y-m-d H:i',
+            onShow:function( ct ){
+            this.setOptions({
+            minDate:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
+            minTime:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
+            })
+            },
+            maxDate:'+1970/01/07',
+            
+            maxTime:'21:00',
+        });
+    });
+</script>
+{% endblock%}

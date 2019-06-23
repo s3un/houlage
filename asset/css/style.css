@@ -1,0 +1,1187 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:500');
+@import url('https://fonts.googleapis.com/css?family=Gugi');
+@import url('https://fonts.googleapis.com/css?family=Cute+Font');
+@import url('https://fonts.googleapis.com/css?family=Heebo');
+
+.bodytype   {
+    height: 700px;
+    background-image: url("/static/img/carscity.jpg");
+    width: 100%;
+    max-width: 100%;
+    background-size: cover;
+}
+
+
+.navbar     {
+    transition: 0.5s ease;
+    margin: 0;
+
+
+}
+
+.navbar-fixed-top   {
+    background-color : 	#87CEED;
+
+}
+
+
+
+
+.circle {
+    border: 1px #ffbe3f solid;
+}
+
+
+
+
+/*.textwrap, .textwrap li a  {
+    color: #000000;
+    font-family: 'Heebo', sans-serif;;
+    font-size: 15px;
+
+
+
+}*/
+
+
+
+.text  p, .logtext  {
+    margin-top: 100px;
+    margin-bottom: 80px;
+    font-family: 'Oswald', sans-serif;
+    color: #ffffff;
+    font-size: 50px;
+}
+
+
+.box    {
+    height: 44px;
+    width: 100%;
+    border: 1px solid #b0b0b0;
+    margin-top: 10px;
+}
+
+.wall   {
+    margin-top: 90px;
+    position: relative;
+}
+
+.seccol img {
+    max-height: 800px;
+    max-width: 800px;
+    height: 500px;
+    width: 540px;
+
+}
+
+/*button on home */
+.butall {
+    margin-left: 100px;
+}
+
+.button {
+
+    outline: none;
+    text-decoration: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 60px;
+    width: 190px;
+    opacity: 1;
+    background-color: #ff090e;
+    border: 1px solid rgba(219, 221, 255, 0.6);
+
+
+}
+.shake a {
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+
+
+}
+
+.shake:hover {
+    animation: rotate 0.7s ease-in-out both;
+
+}
+
+.shake {
+
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+}
+
+
+
+@keyframes rotate {
+    0% {transform: rotate(0deg) translate3d(0, 0, 0)}
+    25%  {transform: rotate(3deg) translate3d(0, 0, 0)}
+    50%  {transform: rotate(-3deg) translate3d(0, 0, 0)}
+    75%  {transform: rotate(1deg) translate3d(0, 0, 0)}
+    100%  {transform: rotate(0deg) translate3d(0, 0, 0)}
+
+}
+
+@keyframes storm    {
+    0% {transform: translate3d( 0, 0, 0) translateZ(0)}
+    25% {transform: translate3d( 4px, 0, 0) translateZ(0)}
+    50% {transform: translate3d( -3px, 0, 0) translateZ(0)}
+    75% {transform: translate3d( 2px, 0, 0) translateZ(0)}
+    100% {transform: translate3d( 0, 0, 0) translateZ(0)}
+}
+
+
+/* footer */
+
+.panel-footer   {
+    background-color: #87CEED;
+    margin-bottom: 30px;
+}
+
+.main-foot  {
+    color: white;
+}
+
+.foot-header    {
+    font-family: 'Heebo', sans-serif;
+    font-size: 25px;
+    display: inline;
+}
+
+
+.md-subhead a {
+    color: white;
+}
+
+.textmarg    {
+    margin-inline: 90px;
+}
+
+.segment    {
+    border: 1px solid #ffffff;
+    margin-top: 30px;
+}
+
+.segment1   {
+    border: 1px solid #ffffff;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.motto, .motto a {
+    text-align: center;
+    color: #ffffff;
+    font-family: "OCR A Extended"
+}
+
+/* parralax */
+
+.colwalltext  {
+    margin-top: 40px;
+}
+
+
+
+.colwall    {
+    background-image: url("/static/img/yellow.png");
+    min-height: 100%;
+    background-size:cover;
+    background-attachment: fixed;
+
+}
+
+.vl {
+    border-left: 1px solid #ffeafb;
+    height: 190px;
+}
+
+.display    {
+    margin-bottom: 90px;
+    margin-top: 90px;
+}
+
+.main-header    {
+    color: #ffffff;
+    font-family: 'Gugi', cursive;
+    font-size:25px;
+    margin-top: 20px;
+
+
+}
+
+.md-headline p {
+    color: #ffffff;
+    font-family: 'Gugi', cursive;
+    margin-top: 10px;
+}
+
+.md-subhead p {
+    font-family: "OCR A Extended";
+    color: #ffffff;
+}
+
+.deco   {
+    margin-bottom:40px;
+}
+
+
+/*scrolltop*/
+.scrollToTop {
+    width: 40px;
+    height:auto;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.68);
+    color: #fff;
+    position: fixed;
+    right: 0;
+    bottom: 40px;
+    z-index: 1;
+    transform: translate(80px,0);
+
+    -webkit-transition: .2s ease;
+    -moz-transition: .2s ease;
+    -o-transition: .2s ease;
+    transition: .2s ease;
+    cursor:pointer;
+}
+
+
+/*scrolldown*/
+.scroll-down {
+    opacity: 1;
+    -webkit-transition: all .5s ease-in 3s;
+    transition: all .5s ease-in 3s;
+}
+
+.scroll-down {
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    margin-left: -16px;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 2px solid  #87CEED;
+    background-size: 14px auto;
+    border-radius: 50%;
+    z-index: 2;
+    -webkit-animation: bounce 2s infinite 2s;
+    animation: bounce 2s infinite 2s;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+    transform: scale(1)
+}
+
+.scroll-down:before {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 6px);
+    transform: rotate(-45deg);
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    border: 2px solid #ff090e;
+    border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+    0%,
+    100%,
+    20%,
+    50%,
+    80% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
+
+/* login css */
+
+.inbody {
+    background-image: url("/static/img/login.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+.signuplog  {
+    color: #ffffff;
+    font-family: 'Gugi', cursive;
+    font-weight: bolder;
+    margin-top: 60px;
+}
+
+.signuplog a {
+    color: #ffffff;
+}
+
+.uptext {
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+    margin-top: 150px;
+    color: #ffffff;
+}
+
+.logheader, .proheader  {
+    font-family: 'Gugi', cursive;
+    font-size: 20px;
+    color: #6f63ff;
+    margin-top: 30px;
+}
+
+.realworld  {
+    background-color: #ffffff;
+    opacity: 0.9;
+    box-shadow: rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+    margin-bottom: 90px;
+    margin-top: 50px;
+}
+
+.textinput, .textInput {
+    border-radius: 500px;
+    border: 1px solid red;
+    margin-top: 20px;
+}
+
+.putcontrol2    {
+    border-radius: 500px;
+    margin-top: 30px;
+    border: 1px solid red;
+}
+
+.gap    {
+    margin-top: 25px;
+}
+
+.loginbutton  {
+    width: 200px;
+    border-radius: 500px;
+}
+
+.forget  {
+    margin-top: 10%;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* signup */
+
+.signbody   {
+    background-image: url("/static/img/signup.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.upbutton   {
+    width: 200px;
+    border-radius: 500px;
+}
+
+.upor   {
+    margin-top: 10px;
+}
+
+.upsearch   {
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+
+/* profile*/
+
+.maincontent p  {
+    font-size: 15px;
+
+}
+
+.selectcontrol  {
+   border-radius: 100px;
+}
+
+
+.pickdate   {
+    border-radius: 500px;
+}
+
+.quickhire  {
+    box-shadow: rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    margin-bottom: 2%;
+
+}
+
+.form-group {
+    font-family: "OCR A Extended";
+}
+
+
+.noteheader, .maincontent p {
+    border-bottom: 1px solid #b0b0b0;
+}
+
+.profilebox {
+    margin: 40px 0 0 0;
+
+}
+
+.glyphset   {
+    position: relative;
+    float: right;
+}
+
+.glyphok {
+    color: green;
+}
+
+.glyphwaiting   {
+    color: yellow;
+}
+
+.glyphfail  {
+    color: red;
+}
+
+
+
+.profilebox img {
+    max-height: 170px;
+    max-width: 200px;
+    height: 180px;
+    width: 200px;
+    border: 1px solid goldenrod;
+    border-radius: 500px;
+}
+
+
+
+.each1  {
+    margin: 40px 0 0 0;
+    font-family: 'Heebo', sans-serif;
+}
+
+.each   {
+    font-family: 'Heebo', sans-serif;
+}
+
+.profilename    {
+    text-align: center;
+    font-family:'Heebo', sans-serif;
+    margin-top: 40px;
+    font-size: 20px;
+
+}
+
+.profile-header {
+    text-align: left;
+    font-family:'Heebo', sans-serif ;
+    font-weight: bold;
+    font-size: large;
+    margin: 10px 0 0 0 ;
+    border-bottom: 1px solid #999999;
+}
+
+.profile-content, .dash-cont    {
+    margin: 10px 0 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+.profile-content p    {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.profile-button {
+    float: right;
+    border-radius: 200px;
+}
+
+.otherdetails   {
+    margin: 40px 0 30px 0;
+    display: inline-block;
+
+}
+
+.otherdetails a {
+    margin-left: 10px;
+}
+
+.otherdetails span, a  {
+    color: #868686;
+    text-decoration: none;
+}
+
+.mainprofile    {
+    margin: 40px 0 90px 0;
+}
+
+
+/* contactpage */
+
+.glyphheader    {
+    margin-top: 20px;
+    border-bottom: 1px solid #b0b0b0;
+}
+
+.contacthead h1 {
+    font-family:'Oswald', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.contactcontent {
+    text-align: center;
+    font-family: "OCR A Extended";
+}
+
+.blockcontact   {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
+.rowshadow  {
+    box-shadow: rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+}
+
+.anothercon {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.anothercon a   {
+    margin-left: 30px;
+    margin:20px;
+}
+
+.anothercon span, .anothercon .conform  {
+    margin: 14px;
+}
+
+.conbutton  {
+    margin-top: 30px;
+    width: 200px;
+    border-radius: 500px;
+}
+
+/*about page*/
+
+.aboutcontent   {
+    text-align: center;
+    font-size: 19px;
+    font-family: 'Heebo', sans-serif;
+    color: #5bc0de;
+}
+
+.aboutbody  {
+    background-color: #f7f7f7;
+}
+
+.title  {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.aboutbox   {
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+
+}
+
+.aboutcol {
+    margin-top: 50px;
+    margin-bottom: 90px;
+}
+
+
+.aboutheader  h4  {
+    margin: 30px 0 0 20px;
+    font-weight: bold;
+    font-family: 'Heebo', sans-serif;
+
+}
+
+
+.aboutrow p  {
+    font-family: 'Heebo', sans-serif ;
+    margin: 0 0 0 20px;
+}
+
+.howcol {
+    margin-top: 90px;
+}
+
+/* cars */
+
+.carslog    {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+.carwall    {
+    width: 100%;
+    height: 400px;
+    background-image: url("/static/img/carseries.jpg");
+    background-size: cover;
+}
+
+.carwall p    {
+    margin-top:10%; 
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 60px;
+}
+
+.wallcontent    {
+    background-color: #87CEED;
+}
+
+
+.carimg img.top:hover {
+    opacity:0;
+}
+
+.carname     {
+    font-family: 'Heebo', sans-serif ;
+    text-align: center;
+    font-weight: bold;
+}
+
+.carsform2  {
+    width: 150px;
+    display: inline-block;
+    margin-left: 30px;
+    border-radius: 100px;
+    margin-top: 30px;
+
+}
+
+
+
+.carbutton  {
+    width: 90px;
+    border-radius: 500px;
+    margin: 0 0 20px 0;
+}
+
+.carbutton2 {
+    width: 90px;
+    border-radius: 500px;
+    margin-left: 50px;
+}
+
+.cf {
+    position:relative;
+    height:250px;
+    width:350px;
+    margin:0 auto;
+}
+
+.cf img {
+    max-height: 250px;
+    max-width: 350px;
+    position:absolute;
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+    cursor: pointer;
+}
+
+.cf img.top:hover {
+    opacity:0;
+}
+
+.carsform2 label, option   {
+    font-family:'Heebo', sans-serif ;
+}
+
+.btn    {
+    font-family:'Heebo', sans-serif ;
+}
+
+.singlebox  {
+   max-width: 550px;
+    max-height: 500px;
+
+}
+
+.singlebox img  {
+    width: 100%;
+    height: 500px;
+}
+
+.singlecar  {
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+
+.singlerow  {
+    margin-top: 20px;
+}
+
+
+.littlecar img  {
+    width: 100%;
+    height: 15%;
+    cursor: pointer ;
+}
+
+/* dashboard*/
+
+.notification-content   {
+    font-family: 'Heebo', sans-serif;
+    margin: 10px 0 10px 0;
+}
+
+.noteheader h4 {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.notification-content select    {
+    width: 120px;
+    display: inline-block;
+}
+
+.notification-content .label1   {
+    margin: 20px 0 20px 10px;
+}
+
+.notification-content .label2   {
+    margin: 20px 0 20px 70px;
+}
+
+.dashmarg   {
+    margin-bottom: 200px;
+}
+
+.dashimage  {
+    background-image: url("/static/img/red.jpg");
+    cursor: pointer;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.dashimage1  {
+    background-image: url("/static/img/fadingblue.png");
+    cursor: pointer;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.dashimage2  {
+    background-image: url("/static/img/purple.jpg");
+    cursor: pointer;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+
+.glyphsethings  {
+    font-size: 30px;
+    margin: 20px 0 20px 20px;
+    float: right;
+}
+
+.dashcontent    {
+    margin: 0 0 10px 20px;
+}
+
+
+.dashtext   {
+    color: #ffffff;
+    margin: 0 0 20px 10px;
+}
+
+.dashimage:hover  {
+    background-color: yellow;
+}
+
+.firstdash  {
+    margin-top: 40px;
+}
+
+.seconddash {
+    margin-top: 50px;
+}
+
+.gpscontain img {
+    max-height: 370px;
+    max-width: 100%;
+    height: 350px;
+    width: 100%;
+}
+
+.gpscontain {
+    margin-bottom: 90px;
+}
+
+.dash-cont button   {
+    display: inline-block;
+    border-radius: 100px;
+    float: right;
+}
+
+.dash-cont h5   {
+    display: inline-block;
+}
+
+/* carinfo */
+
+.selfcar    {
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+.topic-header   {
+    text-align: center;
+    font-family: 'Heebo', sans-serif;
+
+}
+
+.topic-body {
+    text-align: center;
+    font-family: 'Heebo', sans-serif;
+    margin-top: 30px;
+}
+
+.topic-img  {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.topic-img img {
+    width: 100%;
+}
+
+
+.statusbar h4, .anothertopic {
+    font-family: 'Heebo', sans-serif;
+    /*margin-top: 30px;*/
+
+}
+
+.topicinput input   {
+    margin-top: 15px;
+    border-radius:500px;
+    width: 90px;
+}
+
+.picktoreturn   {
+    font-family: 'Heebo', sans-serif;
+    margin-top: 10px;
+
+}
+
+.formedit   {
+    margin: 10px 0 0 0;
+}
+
+.widthcontrol   {
+    width: 250px;
+}
+
+
+
+.personalbutton {
+    width: 180px;
+    border-radius: 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+/*checkout*/
+
+.checkwall  {
+    position: absolute;
+}
+
+.checkwall img  {
+    max-width: 100%;
+    max-height: 300px;
+    width: 100%;
+}
+
+
+.checkform  {
+    margin-top: 170px;
+}
+
+.mainout    {
+    background-color: #f9f9f9;
+    font-family: 'Heebo', sans-serif;
+
+}
+
+
+.selected-cars  {
+    margin: 20px 0 10px 0;
+    border-bottom: 1px solid #b0b0b0;
+    font-family: 'Heebo', sans-serif;
+}
+
+
+
+.selected-cars h5, p   {
+    display: inline-block;
+
+}
+
+.check-content p, h5 {
+    font-family: 'Heebo', sans-serif;
+
+}
+
+
+
+.hiremethod h5 {
+    margin: 40px 0 10px 0;
+
+}
+
+.checkclass p   {
+
+    font-family: 'Heebo', sans-serif;
+    margin: 10px 0 0 20px;
+}
+
+
+
+.buttonout  {
+    border-radius: 200px;
+}
+
+.lastheader {
+    margin-top: 40px;
+}
+
+.lastheader h5  {
+    float: left;
+    margin-bottom: 20px;
+}
+
+.lastout h6 {
+    font-family: 'Heebo', sans-serif;
+    font-weight: bold;
+    margin-top: 40px;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+}
+.totalcol   {
+    background: transparent;
+}
+
+.coltitle   {
+    border-bottom: 1px solid rgba(219, 221, 255, 0.6);
+}
+
+.colcontent {
+    border-bottom: 10px solid #a9a9a9; 
+}
+
+.formcol    {
+    /*display: inline-block;*/
+    /*text-align:center;*/
+   
+}
+
+.formcol2   {
+     /*margin-left: 70px;*/
+    width: 120%;
+    border-radius: 500px;
+    /*margin-top: 10px;*/
+}
+
+.largecol {
+    margin-left: 70px;
+    width: 200px;
+    border-radius: 500px;
+    margin-top: 10px;
+}
+
+.formcol3   {
+     margin-left: 110px;
+    width: 300px;
+    border-radius: 500px;
+    margin-top: 10px;
+}
+
+/*.estimated  {
+    border-top: 1px solid rgba(219, 221, 255, 0.6);
+}*/
+
+.littleform {
+    margin-bottom: 130px;
+}
+.pads {
+    padding: 3px;
+}
+.small{
+    display: block;
+}
+/* new */
+@media screen and (min-width: 767px) {
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding-left: 90px;
+    /* box-sizing: border-box; */
+    transition: .5s;
+    z-index: 1;
+}
+
+nav .logo img  {
+    padding-top: 10px;
+    transition: .5s;
+    z-index: -10;
+    
+}
+
+nav ul  {
+    float: right;
+    margin: 0;
+    display: flex;
+
+}
+
+nav.black   {
+    background:  #87CEED;
+}
+
+nav ul li   {
+    list-style: none;
+    display: inline-block;
+}
+
+nav ul li a {
+    line-height: 80px; 
+    color: #ffffff;
+    padding: 5px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+   
+
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #f2faff;
+    background: #ff0000;
+}
+
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-toggle{
+    background-color: #ff0505;
+    border-radius: 0px;
+}
+    nav ul li a {
+    color: white; 
+}
+/* new dash */
+
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    width: 15%;
+    height: 100%; 
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #87ceed);
+    position: fixed;
+  }
+  
+
+  .tab button {
+    display: block;
+    background-color: transparent;
+    color: rgb(252, 252, 252);
+    padding: 22px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  .tab button:hover {
+    background-color: rgb(29, 28, 28);
+    opacity: 0.1;
+   
+  }
+  
+  /* Create an active/current "tab button" class */
+  .tab button.active {
+    background-color: rgb(29, 28, 28);
+    opacity: 0.1;
+  
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    float: right;
+    padding: 0px 12px;
+    /* border: 1px solid #ccc; */
+    width: 85%;
+    border-left: none;
+    height: 100%;
+   
+  }
+
+  * {box-sizing: border-box}
+
+  .profile1 {
+     position: center;
+      background-color: #fafafa;
+      margin-top: 30px;
+  }
+
+  .newdash    {
+    border-bottom: 1px solid rgb(165, 161, 161);
+  }
+
+  .newprofile img   {
+      width: 200px;
+      height: 200px;
+      max-height: 200px;
+      max-width: 200px;
+      border: 1px solid gold;
+      border-radius:100px;
+  }
+
+  .newprofile   {
+      margin-left: 400px;
+      margin-top: 40px;
+  }

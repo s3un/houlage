@@ -1,0 +1,23 @@
+{% if pickup == "pick" %}
+ 	<div class="col-md-4">
+ 		<label for="Location"> Select Location </label>
+ 	</div>
+ 	 <div class="col-md-8">
+ 	 <select name="pickup" id="pickup" class="form-control formcol2" required>
+         <option>---------------------------</option>
+         {% for loc in locations%}
+         <option value="{{loc.location}}">{{loc.location}}</option>
+         {% endfor%}
+    </select>	
+    <input type="hidden" name="cost" value="{{cost}}">	
+ 	 </div>
+{% elif pickup == "deliver" %}
+ 	<div class="col-md-4">
+ 		<label for="Location"> Enter Location </label>
+ 	</div>
+ 	 <div class="col-md-8">
+ 	 <input type="text" class="form-control formcol2" name="" placeholder="Enter Your location here" required>
+ 	 <small class="small">Cost implication: &#8358;{{cost}}</small> 
+ 	 <input type="hidden" name="cost" value="{{cost}}">	
+ 	 </div>
+{% endif%}

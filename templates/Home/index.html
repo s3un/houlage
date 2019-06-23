@@ -1,0 +1,203 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles%}
+
+{% block content%}
+<!-- <a href=" {% url 'account_login' %} ">Log in</a>
+<h1>{{name}} </h1>
+<form method="post" action=" {% url 'bookform' %} ">
+	{% csrf_token %}
+	<div id="vehicleForm" data-veh-url="{% url 'load_brand'%}">
+	<label>Vehicle Type</label>
+	<select id="id_vehicl" name="vehicle" required>
+		
+		{% for veh in vehic%}
+		<option value="{{veh.tag}}">{{veh.tag}}</option>
+		{% endfor %}
+	</select>
+	</div>
+	<div id="BrandForm" data-model-url="{% url 'load_model' %}">
+		<label>Brand</label>
+		<div>	
+			<select id="id_brand" name="Brand" required>
+				<option>----------</option>
+			</select>
+		</div>
+	</div>
+	<div>
+	<label>Model</label>
+	<select id="id_model" name="Model">
+		<option></option>
+	</select>
+	</div>
+	<div>
+		<label>From</label>
+		<input type="text" name="Source" required>
+	</div>
+	<div>
+		<label>To</label>
+		<input type="text" name="Destination" required>
+	</div>
+	<button type="submit">Go</button>
+</form> -->
+<div class="bodytype">
+    <div class="container text">
+        <p>NOTHING HAPPENS UNTIL <br> YOU MOVE.</p>
+    </div>
+    <div class="button row butall"><div class="shake"><a href="{% url 'auto' %}" class="button">Book Now</a></div></div>
+    <div class="row">
+        <div class="container">
+            <section>
+                <a href="#" class="scroll-down" address="true"></a>
+            </section>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+    <div class="scrollToTop">
+        <span>UP</span>
+    </div>
+
+<div class="container-fluid display">
+    <div class="row">
+        <div class="md-col-12 colwall">
+            <div class="container">
+                <center><div class="main-header"><p class="newp">Service rendered</p></div></center>
+                <div class="col-md-3 colwalltext">
+                    <div class="header">
+                      <center><img src="{% static 'img/pickup.png' %}"></center>
+                    </div>
+                    <md-card-tile>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <center><p>TRUCK</p></center>
+                            </span>
+
+                            <span class="md-subhead">
+                               <center><p>Pick up Available for easy movement of goods.</p></center>
+                            </span>
+                        </md-card-title-text>
+                    </md-card-tile>
+                </div>
+
+                <div class="col-md-3 vl colwalltext">
+                    <div class="header">
+                        <center><img src="{% static 'img/surface1.png' %}"></center>
+                    </div>
+                    <md-card-tile>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <center><p>CAR</p></center>
+                            </span>
+
+                            <span class="md-subhead">
+                               <center><p>Pick up Available for easy movement of goods.</p></center>
+                            </span>
+                        </md-card-title-text>
+                    </md-card-tile>
+                </div>
+
+                <div class="col-md-3 vl colwalltext">
+                    <div class="header">
+                        <center><img src="{% static 'img/oiltank.png' %}"></center>
+                    </div>
+                    <md-card-tile>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <center><p>TANKER</p></center>
+                            </span>
+
+                            <span class="md-subhead">
+                               <center><p>Pick up Available for easy movement of goods.</p></center>
+                            </span>
+                        </md-card-title-text>
+                    </md-card-tile>
+                </div>
+
+                <div class="col-md-3 vl colwalltext">
+                    <div class="header">
+                        <center><img src="{% static 'img/van.png' %}"></center>
+                    </div>
+                    <md-card-tile>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <center><p>PICKUP VAN</p></center>
+                            </span>
+
+                            <span class="md-subhead">
+                               <center><p>Pick up Available for easy movement of goods.</p></center>
+                            </span>
+                        </md-card-title-text>
+                    </md-card-tile>
+                </div>
+                <div class="deco"> hi</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 circle">
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+	<script src="{% static 'js/jquery.js' %}"></script> 
+  <script>
+    $("#id_vehicl").change(function () {
+      var url = $("#vehicleForm").attr("data-veh-url");  // get the url of the `load_cities` view
+      var Vehicle_tag = $(this).val();  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'Vehicle': Vehicle_tag       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_brand").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+
+    $("#id_brand").change(function () {
+      var url = $("#BrandForm").attr("data-model-url");  // get the url of the `load_cities` view
+      var brand_tag = $(this).val();
+      var vehicle= $(".brand_c").attr("data-vehicle");  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'brand_tag': brand_tag,
+          'vehicle':vehicle,       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+      
+      console.log(vehicle)
+
+    });
+
+    // var frm=$("#jobsform");
+    // frm.submit(function(){
+    //   $.ajax({
+    //     data:$(this).serialize(),
+    //     type:$(this).attr('method'),
+    //     url: $(this).attr('action'),
+    //     success: function(data){
+    //       $('.complete_box').show()
+    //       $('.complete').html(data)
+
+    //     }
+    //   });
+    //   return false;
+    // });
+  </script>
+</html>

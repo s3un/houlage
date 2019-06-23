@@ -1,0 +1,204 @@
+{% load static from staticfiles%}
+<html>
+<head>
+    <title>Transport</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="height=device-height,width=device-width, initial-scale=1.0,maximum-scale=1.0,user-scalable=no, target-densitydpi=device-dpi">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/ScrollMagic.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+     <link rel="stylesheet" href="{% static 'css/line-awesome.css' %}">
+     {% block style%}
+     {% endblock%}
+</head>
+
+        <script type="text/javascript">
+        $(function() {
+            $('.scroll-down').click (function() {
+                $('html, body').animate({scrollTop: $('.newp').offset().top }, 'slow');
+                return false;
+            });
+        });
+
+        /*navbar*/
+        // $(window).scroll(function(){
+        //     var ScrollTop = parseInt($(window).scrollTop());
+
+        //     if (ScrollTop > 0) {
+        //         $(".navbar").addClass("addnavbar");
+        //     }
+
+        //     else
+        //     {
+        //         $(".navbar").removeClass("addnavbar")
+        //     }
+        // }); 
+
+        $(window).on('scroll', function(){
+          if($(window).scrollTop()){
+              $('nav').addClass('black');
+          }
+
+          else
+          {
+              $('nav').removeClass('black');
+          }
+       });
+    </script>
+
+
+
+
+<body>
+    <nav class="hidden-xs">
+    <div class="logo">
+        <div class="container">
+            <a href="{% url 'index' %}"><img src="{% static 'img/' %}"></a>
+            <button style="margin-top: 20px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#textwrap">
+                <span  class="sr-only">Toggle Navigation</span>
+                <span style="background-color:red;" class="icon-bar"></span>
+                <span style="background-color:red;" class="icon-bar"></span>
+                <span style="background-color:red;" class="icon-bar"></span>
+            </button>
+
+                <ul class="collapse navbar-collapse" id="textwrap">
+                <li><a href="{% url 'index' %}" class="{%if request.path == '/'%}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
+                {% if user.is_authenticated%}
+                <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% if user.is_staff%}
+                <li><a href="{% url 'auto_admin' %}">Admin</a></li>
+                {%endif%}
+                 {% else %}
+                 <li><a href="aboutus.html">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                 <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
+                 <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
+                 {% endif %}
+                </ul>  
+        </div>        
+    </div>
+</nav>
+ <nav class="navbar navbar-fixed-top hidden-lg hidden-md hidden-sm">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+     <a href="{% url 'index' %}"><img src="{% static 'img/' %}"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'index' %}" class="{%if request.path == '/'%}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
+                {% if user.is_authenticated%}
+                <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% if user.is_staff%}
+                <li><a href="{% url 'auto_admin' %}">Admin</a></li>
+                {%endif%}
+                 {% else %}
+                 <li><a href="aboutus.html">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                 <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
+                 <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
+                 {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content%}
+
+{%endblock%}
+
+
+<div class="panel-footer">
+    <div class="motto"><h3>WE move you follow....</h3></div>
+    <div class="container">
+        <div class="segment1"></div>
+    </div>
+    <div class="container-fluid">
+        <div class="row main-foot">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div class="md-display foot-header">
+                        <p >Transport</p>
+                    </div>
+                    <div class="md-subhead1">
+                        <a href=""><img src="{% static 'img/instgram.png' %}"></a>
+                        <a style="margin-left: 10px;" href=""><img src="{% static 'img/twitter.png' %}"></a>
+                        <a style="margin-left: 10px;" href=""><img src="{% static 'img/g457.png' %}"></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="md-display foot-header ">
+                        <p>About us</p>
+                    </div>
+                    <div class="md-subhead">
+                        <a style="margin-bottom: 20px;" class="textmarg" href="#">News</a><br>
+                        <a class="textmarg" href="#">Blog</a><br>
+                        <a href="#">Careers</a><br>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+                    <div class="md-display foot-header">
+                        <p>Offspring</p>
+                    </div>
+                    <div class="md-subhead">
+                        <a href="#">Trans.. for Oil</a><br>
+                        <a href="#">Trans.. for Convinence</a><br>
+                        <a href="#">Trans.. for Fright</a><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="segment"></div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-4 motto ">
+                    <h5>Copyright &copy Transport inc.</h5>
+                </div>
+
+                <div class="col-md-2 motto" >
+                    <a href="#"><h5>Privacy</h5></a>
+                </div>
+
+                <div class="col-md-2 motto">
+                    <a href=""> <h5>Terms</h5></a>
+                </div>
+
+                <div class="col-md-2 motto >
+
+                </div>
+
+                <div class="col-md-2 motto >
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% block scripts%}
+
+{% endblock%}
+</html>

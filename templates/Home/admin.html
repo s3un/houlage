@@ -1,0 +1,28 @@
+{%extends 'Home/base.html'%}
+
+{% block content%}
+<div class="Aoto" style="padding-top:70px;">
+	<center><h1>Automobiles </h1><a href="{% url 'create_car' %}"> Add new car</a></center>
+<table class="table table-condensed table-bordered">
+	<tr>
+		<th>S/N</th>
+		<th>Brand</th>
+		<th>Model</th>
+		<th>Availability</th>
+		<th>Actions</th>
+	</tr>
+	{% for autos in automobiles%}
+	<tr>
+		<td>{{forloop.counter}}</td>
+		<td>{{autos.Brands}}</td>
+		<td>{{autos.Model}}</td>
+		<td>{{autos.Availability}}</td>
+		<td style="align-items:center;">
+			<span class="glyphicon glyphicon-pencil"></span><span style="margin-left:3%; color:red;" class="glyphicon glyphicon-minus"></span>
+		</td>
+	</tr>
+	{% endfor%}
+</table>	
+</div>
+
+{% endblock%}

@@ -1,0 +1,83 @@
+{% extends 'home/signbase.html'%}
+{% load crispy_forms_tags %}
+{%block style%}
+<style type="text/css">
+    label {
+        display: none;
+    }
+</style>
+{% endblock%}
+
+{% block content %}
+<body class="inbody">
+
+<div class="container-fluid">
+    <div class="row logcol">
+
+        <div class="col-md-12">
+            <div class="col-md-8">
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+               <div class="signuplog">
+                  <center><h4><a href="{% url 'account_signup' %}" class="">SIGN UP</a></h4></center>
+               </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-12">
+            <div class="">
+                <div class="col-md-6 hidden-xs">
+                        <p class="logtext">WELCOME BACK. </p>
+                </div>
+            </div>
+
+
+            <div class="col-md-2 col-xs-12">
+
+            </div>
+
+            <div class="col-md-3 col-xs-12 realworld">
+                    <center><p class="logheader">LOGIN</p></center>
+                <form method="post">
+                    {% for error in form.non_field_errors%}
+                        {{error|escape}}
+                    {% endfor %}
+                  {% csrf_token %}
+                    <div class="form-group">
+                        {{form.login|as_crispy_field}}
+                    </div>
+
+                    <div class="form-group">
+                      {{form.password|as_crispy_field}}
+                        
+                    </div>
+
+                    <div class="form-check gap">
+                        <center> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label></center>
+                    </div>
+
+                   <center> <button type="submit" class="btn btn-primary loginbutton gap">Log in</button></center>
+                    <div class="forget"><a href="" >Forget password ?</a></div>
+                </form>
+            </div>
+
+            <div class="col-md-1">
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+{% endblock%}
+                <form method="post">
+                  {% csrf_token %}
+                  {{form.as_ul}}                        
+                        <center><button type="submit" class="btn btn-danger" style="width
+                        :80%">Submit</button></center>
+                </form>

@@ -1,0 +1,107 @@
+{% extends 'home/base.html'%}
+{% load static from staticfiles%}
+{% load crispy_forms_tags %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+<style type="text/css">
+	nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding-left: 90px;
+    background: rgba(0,0,0,0.1);
+    /* box-sizing: border-box; */
+    transition: .5s;
+    z-index: 1;
+}
+</style>
+{% endblock%}
+{% block content%}
+<div style="padding-top:70px;"></div>
+<h1>Bookings</h1>
+{% for ren in rents_obj%}
+<p>{{ren.pk}}</p>
+{% endfor %}
+{% if rents_obj %}
+<div class="row">
+<div class="col-md-12" >
+	<div class="table-responsive">
+	<table style="text-align: justify;" class="table table-striped">
+		<thead>
+		<tr>
+			<th scope="row">No</th>
+			<th>Auto Mobile</th>
+			<th>Cost/day</th>
+			<th>Pickup Date</th>
+			<th>Return Date</th>
+			<th>Driver @ &#8358;75/day</th>
+			<th>Unit Cost</th>
+		</tr>		
+		</thead>
+		<tbody>
+			{%for mobile in rents_obj%}
+			<tr>
+				<th>{{forloop.counter}}</th>
+				<td>{{mobile.Automobile.Brands}} {{mobile.Automobile.Model}} <small>
+					<a href=" {% url 'remove_rent' rpk=mobile.pk %}">remove?</a>
+				</small></td>
+				<td>&#8358;{{mobile.Automobile.Cost}}/day</td>
+				<td>{{mobile.pickup_date.date}}</td>
+				<td>{{mobile.return_date.date}}</td>
+				<td>&#8358;{{mobile.Cost}}/{{mobile.days}} days</td>
+			</tr>
+			{% endfor%}
+			<form method="post" action="{% url 'checkout' %}">
+				{% csrf_token%}
+			<tr>
+				<td colspan="6"></td>
+				<td><b>Subtotal:</b> &#8358; {{carts.subtotal}}</td>
+			</tr>
+			<tr>
+				<td colspan="6"></td>
+				<td><b>Total:</b>&#8358;{{carts.total}}
+					<button type="submit" class="btn btn-danger">Proceed to Checkout</button>
+					
+				</td>
+			</tr>
+			</form>
+		</tbody>
+
+	</table>		
+	</div>
+
+</div>
+</div>	
+{% else %}
+	<p>Booking is empty</p>
+{%endif%}
+{% endblock%}
+
+{%block scripts %}
+<script src="{% static 'js/jquery.datetimepicker.full.min.js' %}"></script>
+<script src="{% static 'js/stripe.in.js' %}"></script>
+<!--<script src="https://js.stripe.com/v3/"></script>-->
+<script type="text/javascript">
+	$(function() {
+		$("#id_pickup_date").datetimepicker({
+			format:'d/m/Y H:i',
+			minDate:'0',
+			maxDate:'+1970/01/07',
+			minTime:0,
+			maxTime:'21:00',
+		});
+		$("#id_return_date").datetimepicker({
+			format:'d/m/Y H:i',
+			minDate:'+1970/01/02',
+			maxDate:'+1970/01/07',
+			minTime:0,
+			maxTime:'21:00',
+		});
+	});
+
+
+
+</script>
+{% endblock%}

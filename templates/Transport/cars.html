@@ -1,0 +1,13 @@
+            <div class="col-md-4">
+                <div class="cf">
+                    <img class="bottom" src="{{automobile.image.url}}" />
+                    <img class="top" src="{{automobile.image.url}}" />
+                </div>
+                <div class="carname">
+                    <p>{{automobile.Brands}} {{automobile.Model}}</p>
+                </div>
+                <div class="carname">
+                    <p>&#8358; {{automobile.Cost}}/hr</p>
+                </div>
+               <center><a href=" {% url 'auto_details' pk=automobile.pk %} "><button class="btn carbutton btn-danger">Hire</button></a></center>
+            </div>

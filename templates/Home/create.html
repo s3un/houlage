@@ -1,0 +1,78 @@
+{% extends 'Home/base.html'%}
+{% load crispy_forms_tags %}
+{% block style %}
+<style type="text/css">
+ .textinput, .textInput {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 0px;
+
+}	
+</style>
+
+{% endblock%}
+{% block content%}
+<div class="row"style="padding-top:70px;">
+	<div class="col-md-4"></div>
+	<div class="col-md-5 quickhire col-md-pull-1"style="margin-bottom:5%;">
+		<center><h3>ADD NEW CAR</h3></center>
+	<div class="col-md-12 ">
+	<form enctype="multipart/form-data" class="form-horizontal"  method="post">
+	{% csrf_token %}
+	<div class="col-md-12">
+	<div class="form-group row">
+		{{form.Vehicle_id|as_crispy_field}}
+	</div>		
+	</div>
+
+	<div class="col-md-12 ">
+		<h5>Vehicle Data</h5>
+		<div class="row">
+		<div class="col-md-5 create form-group">
+			{{form.Brands|as_crispy_field}}
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-5 create form-group">
+			{{form.Model|as_crispy_field}}
+		</div>			
+		</div>
+<div class="row">
+		<div class="col-md-5 create form-group">
+			{{form.Color|as_crispy_field}}
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-5 create form-group">
+			{{form.No_of_Seat|as_crispy_field}}
+		</div>	
+</div>
+
+<div class="row">
+
+		<div class="col-md-5 create form-group">
+			{{form.Availability|as_crispy_field}}
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-5 create form-group">
+			{{form.Air_Condition|as_crispy_field}}
+		</div>
+</div>
+<div class="row">
+		<div class="col-md-5 create form-group">
+			{{form.image|as_crispy_field}}
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-5 create form-group">
+			{{form.Cost|as_crispy_field}}
+		</div>	
+</div>
+
+
+	</div>
+		<center><button type="submit" style="width:180px;" class="btn btn-danger"><span>Add</span></button></center>		
+	</form>				
+		</div>
+
+	</div>
+	<div class="col-md-3"></div>
+</div>
+{% endblock %}

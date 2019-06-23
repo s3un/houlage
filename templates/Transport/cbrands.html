@@ -1,0 +1,5 @@
+<option>--------</option>
+{% for brand in brands %}
+<option class="brand_c"  data-vehicle="{{veh.pk}}" data-brand="{{brand.pk}}" value="{{ brand.pk }}">{{ brand.Brand_Name }}</option>
+{% endfor %}
+
