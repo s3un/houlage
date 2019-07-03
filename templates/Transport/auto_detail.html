@@ -1,4 +1,4 @@
-{% extends 'home/base.html'%}
+{% extends  'Home/base.html'%}
 {% load static from staticfiles%}
 {% load crispy_forms_tags %}
 {% block style %}
@@ -37,28 +37,28 @@
                         {% endif%}
                     </div>
 				</div>
-				
-					
+
+
 				{% if RentInfo.exists%}
                 <div class="col-md-12">
-                   {% for rent in RentInfo %} 
+                   {% for rent in RentInfo %}
                     <div class="picktoreturn col-md-6">
                         <h4 style="color: #b0b0b0;">Hire On</h4>
-                        
-                            
+
+
                                 {{rent.pickup_date}}
-                            
-                        
+
+
                     </div>
-                    
+
                     <div class="picktoreturn col-md-6">
                         <h4 style="color: #b0b0b0;">Return On</h4>
-                        
+
                             <div class="form-group">
                                 {{rent.return_date}}
                             </div>
                     </div>
-               
+
                 </div>
 				<center><a href="{% url 'remove_rent' rpk=rent.pk %}"><button class="btn btn-danger personalbutton">Remove from Bookings?</button></a></center>
                  {% endfor%}
@@ -67,37 +67,37 @@
                     {% csrf_token %}
                      <!--   <div class="anothertopic col-md-6">
                         <h4 style=" color: #b0b0b0;">Specification</h4>
-                        
+
                         <div class="topicform">
                             <div class="form-group topicinput col-md-6">
                                     <input class="form-control" type="text" placeholder="quantity">
                                 </div>
-                            
+
                         </div>
                     </div>-->
                 <div class="col-md-12">
-                    
+
                     <div class="picktoreturn col-md-6">
                         <h4 style="color: #b0b0b0;">Hire On</h4>
-                        
-                            
+
+
                                 {{dateForm.pickup_date|as_crispy_field}}
-                            
-                        
+
+
                     </div>
-                    
+
                     <div class="picktoreturn col-md-6">
                         <h4 style="color: #b0b0b0;">Return On</h4>
-                        
+
                             <div class="form-group">
                                 {{dateForm.return_date|as_crispy_field}}
                             </div>
                     </div>
-               
+
                 </div>
 				<input type="hidden" name="automobile" value="{{details.pk}}">
                     <center><button class="btn btn-danger personalbutton">Add to Bookings</button></center>
-				{% endif %}  
+				{% endif %}
 			</form>
             </div>
         </div>
@@ -114,7 +114,7 @@
             minDate:'0',
             maxDate:'+1970/01/07',
             minTime:0,
-           
+
         });
         $("#id_return_date").datetimepicker({
             format:'Y-m-d H:i',
@@ -125,7 +125,7 @@
             })
             },
             maxDate:'+1970/01/07',
-            
+
             maxTime:'21:00',
         });
     });

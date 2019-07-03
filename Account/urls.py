@@ -2,14 +2,14 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import login, password_reset
 from django.conf import settings
-from django.conf.urls.static import static 
+from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.contrib.auth import views as auth_views
 from . import views
-from allauth.account import views as all_views 
+from allauth.account import views as all_views
 urlpatterns = [
 	url(r'^login/$', all_views.LoginView.as_view(), {'template_name':'account/login.html'}, name='account_login'),
-	url(r'^SignUp/$', all_views.SignupView.as_view(), {'template_name':'Account/signup.html'}, name='account_signup'),
+	url(r'^SignUp/$', all_views.SignupView.as_view(), {'template_name':'account/signup.html'}, name='account_signup'),
 	url(r'^Mail_activate/$', all_views.email_verification_sent, name='account_email_verification_sent'),
 	url(r"^confirm-email/(?P<key>[-:\w]+)/$", all_views.confirm_email,
         name="account_confirm_email"),

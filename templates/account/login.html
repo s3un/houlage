@@ -1,4 +1,4 @@
-{% extends 'home/signbase.html'%}
+{% extends 'Home/signbase.html'%}
 {% load crispy_forms_tags %}
 {%block style%}
 <style type="text/css">
@@ -53,7 +53,7 @@
 
                     <div class="form-group">
                       {{form.password|as_crispy_field}}
-                        
+
                     </div>
 
                     <div class="form-check gap">
@@ -77,7 +77,7 @@
 {% endblock%}
                 <form method="post">
                   {% csrf_token %}
-                  {{form.as_ul}}                        
+                  {{form.as_ul}}
                         <center><button type="submit" class="btn btn-danger" style="width
                         :80%">Submit</button></center>
                 </form>

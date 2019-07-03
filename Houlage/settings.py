@@ -1,4 +1,4 @@
-import django_heroku
+
 """
 Django settings for Houlage project.
 
@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,7 +28,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+#E-mail settings
+# EMAIL_USE_TLS = True
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = config('EMAIL_PORT', cast=int)
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,8 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
  # 3rd party
-    'allauth', 
-    'allauth.account', 
+    'allauth',
+    'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
     'stripe',
@@ -70,7 +77,7 @@ ROOT_URLCONF = 'Houlage.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates',)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,6 +158,7 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT= '/staticfiles/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'asset'),
 )
@@ -173,9 +181,8 @@ ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION ="mandatory"
+ACCOUNT_EMAIL_VERIFICATION ="optional"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =3
-ACCOUNT_CONFIRM_EMAIL_ON_GET=False
+ACCOUNT_CONFIRM_EMAIL_ON_GET=True
 SITE_ID = 1
 AUTH_USER_MODEL = 'Account.CustomUser'
-django_heroku.settings(locals())

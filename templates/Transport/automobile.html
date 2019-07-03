@@ -1,4 +1,4 @@
-{% extends 'home/base.html'%}
+{% extends  'Home/base.html'%}
 {% load static from staticfiles%}
 {% block content%}
 <div class="cars">
@@ -11,7 +11,7 @@
    <div class="carsform">
         <form action="{% url 'load_auto' %}" id="carform" method="post" enctype="multipart/form-data" novalidate>
         	{% csrf_token%}
-        	
+
 			<div id="vehicleForm" class="form-group carsform2" data-veh-url="{% url 'load_brand'%}">
 			<label>Vehicle Type</label>
 			<select class="form-control" id="id_vehicl" name="vehicle" required>
@@ -24,9 +24,9 @@
 
 			<div id="BrandForm" class="form-group carsform2" data-model-url="{% url 'load_model' %}">
 				<label>Brand</label>
-				<div>	
+				<div>
 					<select class="form-control" id="id_brand" name="Brand" required>
-						
+
 					</select>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 <div class="container-fluid carslog">
     <div class="row">
         <div class="col-md-12 complete">
-        {% for auto in automobile%}	
+        {% for auto in automobile%}
             <div class="col-md-4">
                 <div class="cf">
                     <img class="bottom" src="{{auto.image.url}}" />
@@ -65,14 +65,14 @@
             </div>
            {% endfor %}
         </div>
-		
+
     </div>
 </div>
 
 {% endblock%}
 {% block scripts%}
 
-<script src="{% static 'js/jquery.js' %}"></script> 
+<script src="{% static 'js/jquery.js' %}"></script>
   <script>
     $("#id_vehicl").change(function () {
       var url = $("#vehicleForm").attr("data-veh-url");  // get the url of the `load_cities` view
@@ -103,7 +103,7 @@
           $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
         }
       });
-      
+
 
     });
 

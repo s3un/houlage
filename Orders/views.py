@@ -13,12 +13,13 @@ def Order_create(request):
 		print (order_total)
 		print(cost)
 		checkout_amount= float(order_total) + float(cost)
+		amounts=int(checkout_amount)
 		charge = stripe.Charge.create(
-			amount=checkout_amount,
+			amount=amounts,
 			currency = 'ngn',
 			description='Rental charges',
 			source=token,
 			)
 	return HttpResponse("successful")
-	
+
 

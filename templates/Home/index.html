@@ -1,4 +1,4 @@
-{% extends 'home/base.html'%}
+{% extends  'Home/base.html'%}
 {% load static from staticfiles%}
 
 {% block content%}
@@ -9,7 +9,7 @@
 	<div id="vehicleForm" data-veh-url="{% url 'load_brand'%}">
 	<label>Vehicle Type</label>
 	<select id="id_vehicl" name="vehicle" required>
-		
+
 		{% for veh in vehic%}
 		<option value="{{veh.tag}}">{{veh.tag}}</option>
 		{% endfor %}
@@ -17,7 +17,7 @@
 	</div>
 	<div id="BrandForm" data-model-url="{% url 'load_model' %}">
 		<label>Brand</label>
-		<div>	
+		<div>
 			<select id="id_brand" name="Brand" required>
 				<option>----------</option>
 			</select>
@@ -149,7 +149,7 @@
     </div>
 
 {% endblock %}
-	<script src="{% static 'js/jquery.js' %}"></script> 
+	<script src="{% static 'js/jquery.js' %}"></script>
   <script>
     $("#id_vehicl").change(function () {
       var url = $("#vehicleForm").attr("data-veh-url");  // get the url of the `load_cities` view
@@ -180,7 +180,7 @@
           $("#id_model").html(data);  // replace the contents of the city input with the data that came from the server
         }
       });
-      
+
       console.log(vehicle)
 
     });

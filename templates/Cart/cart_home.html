@@ -1,4 +1,4 @@
-{% extends 'home/base.html'%}
+{% extends  'Home/base.html'%}
 {% load static from staticfiles%}
 {% load crispy_forms_tags %}
 {% block style %}
@@ -38,7 +38,7 @@
 			<th>Return Date</th>
 			<th>Driver @ &#8358;75/day</th>
 			<th>Unit Cost</th>
-		</tr>		
+		</tr>
 		</thead>
 		<tbody>
 			{%for mobile in rents_obj%}
@@ -63,17 +63,17 @@
 				<td colspan="6"></td>
 				<td><b>Total:</b>&#8358;{{carts.total}}
 					<button type="submit" class="btn btn-danger">Proceed to Checkout</button>
-					
+
 				</td>
 			</tr>
 			</form>
 		</tbody>
 
-	</table>		
+	</table>
 	</div>
 
 </div>
-</div>	
+</div>
 {% else %}
 	<p>Booking is empty</p>
 {%endif%}
