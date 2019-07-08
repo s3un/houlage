@@ -71,14 +71,22 @@
                 <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
                 {% if user.is_authenticated%}
                 <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                {% if user.is_staff%}
-                <li><a href="{% url 'auto_admin' %}">Admin</a></li>
-                {%endif%}
+                <li class="dropdown">
+                   <a class="dropdown-toggle " data-toggle="dropdown" href="#"> {{request.user.username}}
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                       <li><a href="{% url 'dashboard' %}">Dashboard</a></li>  
+                      {% if user.is_staff%}
+                        <li><a href="{% url 'auto_admin' %}">Admin</a></li>
+                      {%endif%}
+                      <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                
+                
                  {% else %}
-                 <li><a href="aboutus.html">About us</a></li>
-                <li><a href="contact.html">Contact us</a></li>
+                 {# <li><a href="aboutus.html">About us</a></li> #}
+                <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>
                  <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
                  <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
                  {% endif %}
@@ -94,7 +102,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-     <a href="{% url 'index' %}"><img src="{% static 'img/' %}"></a>
+     <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/' %}"></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -102,15 +110,22 @@
                 <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
                 {% if user.is_authenticated%}
                 <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
-                {% if user.is_staff%}
-                <li><a href="{% url 'auto_admin' %}">Admin</a></li>
-                {%endif%}
+                <li class="dropdown">
+                   <p class="text-danger"> Welcome</p><a class="dropdown-toggle " data-toggle="dropdown" href="#"> {{request.user.username}}
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li> 
+                     {% if user.is_staff%}
+                    <li><a href="{% url 'auto_admin' %}">Admin</a></li>
+                    {%endif%}
+                      <li><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+                </li>
+                
+               
                  {% else %}
                  <li><a href="aboutus.html">About us</a></li>
-                <li><a href="contact.html">Contact us</a></li>
-                 <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
+                <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>             <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
                  <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
                  {% endif %}
       </ul>

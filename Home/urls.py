@@ -15,6 +15,7 @@ urlpatterns = [
 	url(r'Order/', include('Orders.urls')),
 	url(r'^load_brand/$', views.Load_Brand, name='load_brand'),
 	url(r'^Dashboard/$', views.dashboard, name='dashboard'),
+	url(r'^contact/$', views.contact, name='contact'),
 	url(r'^Admin/$', views.auto_admin, name='auto_admin'),
 	url(r'^Create/$', views.car_create.as_view(), name='create_car'),
 	url(r'^load_model/$', views.Load_Model, name='load_model'),

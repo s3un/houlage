@@ -106,3 +106,8 @@ class car_create(CreateView):
 			c= form.cleaned_data
 			create.save()
 			return redirect('auto_admin')
+
+def contact(request):
+	template="Home/contact.html"
+
+	return render (request,template)
