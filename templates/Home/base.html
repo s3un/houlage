@@ -68,7 +68,7 @@
 
                 <ul class="collapse navbar-collapse" id="textwrap">
                 <li><a href="{% url 'index' %}" class="{%if request.path == '/'%}active{% endif %}">Home</a></li>
-                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
+                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Services</a></li>
                 {% if user.is_authenticated%}
                 <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
                 <li class="dropdown">
