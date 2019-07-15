@@ -8,6 +8,7 @@ from django.contrib.auth import views as auth_views
 from . import views
 from allauth.account import views as all_views
 urlpatterns = [
+	url(r'^accounts/', include('allauth.urls')),
 	url(r'^login/$', all_views.LoginView.as_view(), {'template_name':'account/login.html'}, name='account_login'),
 	url(r'^SignUp/$', all_views.SignupView.as_view(), {'template_name':'account/signup.html'}, name='account_signup'),
 	url(r'^Mail_activate/$', all_views.email_verification_sent, name='account_email_verification_sent'),

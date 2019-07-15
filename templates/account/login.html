@@ -55,12 +55,10 @@
                       {{form.password|as_crispy_field}}
 
                     </div>
-
-                    <div class="form-check gap">
-                        <center> <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label></center>
+                    <div class="form-group" style="padding:0 5px 0 5px">
+                      <label class="mr-1" style="display:inline-block;">Remember me? </label>
+                      {{form.remember}}
                     </div>
-
                    <center> <button type="submit" class="btn btn-primary loginbutton gap">Log in</button></center>
                     <div class="forget"><a href="" >Forget password ?</a></div>
                 </form>

@@ -1,4 +1,6 @@
 {% extends 'Home/signbase.html'%}
+{% load staticfiles%}
+{% load socialaccount %}
 {% load crispy_forms_tags%}
 {%block style%}
 <style type="text/css">
@@ -22,7 +24,6 @@
             <div class="col-md-4">
             </div>
         </div>
-
 
         <div class="col-md-12">
             <div class="col-md-8  hidden-xs">
@@ -61,7 +62,7 @@
                     <center><button type="submit" class="btn btn-primary upbutton gap">Submit</button><center>
                         <center><p class="upor">OR</p></center>
                         <center><p>Sign up with</p></center>
-                        <center><a href=""><img class="upsearch" src="img/search.png"></a></center>
+                        <center><a href='{% provider_login_url "google" %}'><img class="upsearch" src="{% static 'img/search.png' %}"></a></center>
                 </form>
             </div>
 

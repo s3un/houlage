@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.openid',
     'crispy_forms',
     'stripe',
 
@@ -172,17 +174,28 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
     )
 
+SOCIALACCOUNT_PROVIDERS = {
+'openid': {
+'SERVERS': [
+dict(id='google',
+name='Google',
+openid_url='https://www.google.com/accounts/o8/id'),
+]
+}
+}
+
 STRIPE_PUBLISHABLE_KEY="pk_test_ivgtaBziZaAJym3lyiIk6SYx00r3m8hSfF"
 STRIPE_SECRET_KEY="sk_test_hOYnhhoCpM8mJ4TfRedjnS2t00OQIqdSzB"
 
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
-ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SESSION_REMEMBER = None
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION ="optional"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =3
 ACCOUNT_CONFIRM_EMAIL_ON_GET=True
+SOCIALACCOUNT_ADAPTER ="allauth.socialaccount.adapter.DefaultSocialAccountAdapter"
 SITE_ID = 1
 AUTH_USER_MODEL = 'Account.CustomUser'
