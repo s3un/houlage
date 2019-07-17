@@ -87,8 +87,11 @@
                  {% else %}
                  {# <li><a href="aboutus.html">About us</a></li> #}
                 <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>
-                 <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
-                 <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
+                     <div class="btn-group">
+                      <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'account_login' %}?next={{request.path}}">Login</a></button>
+                      <button type="button" class="btn btn-danger"><a style="color:white;" href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></button>
+                    </div>
+                
                  {% endif %}
                 </ul>  
         </div>        
@@ -104,8 +107,8 @@
       </button>
      <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/' %}"></a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse center" id="myNavbar">
+      <ul class="nav navbar-nav ">
         <li><a href="{% url 'index' %}" class="{%if request.path == '/'%}active{% endif %}">Home</a></li>
                 <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
                 {% if user.is_authenticated%}
@@ -125,8 +128,11 @@
                
                  {% else %}
                  <li><a href="aboutus.html">About us</a></li>
-                <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>             <li><a href="{% url 'account_login' %}?next={{request.path}}">Login</a></li>
-                 <li><a href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></li>
+                <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>             <div class="btn-group">
+                      <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'account_login' %}?next={{request.path}}">Login</a></button>
+                      <button type="button" class="btn btn-danger"><a style="color:white;" href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></button>
+                    </div>
+                
                  {% endif %}
       </ul>
     </div>

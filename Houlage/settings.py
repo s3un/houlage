@@ -72,7 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-# LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL='index'
 ROOT_URLCONF = 'Houlage.urls'
 
@@ -196,6 +196,9 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_VERIFICATION ="optional"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS =3
 ACCOUNT_CONFIRM_EMAIL_ON_GET=True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = True
 SOCIALACCOUNT_ADAPTER ="allauth.socialaccount.adapter.DefaultSocialAccountAdapter"
+SOCIALACCOUNT_AUTO_SIGNUP =False
+SOCIALACCOUNT_FORMS ={'signup': 'Account.forms.SocialForm'}
 SITE_ID = 1
 AUTH_USER_MODEL = 'Account.CustomUser'
