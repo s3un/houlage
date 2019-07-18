@@ -2,6 +2,7 @@ from datetime import datetime
 from django.shortcuts import render, HttpResponse,redirect
 from .models import AutoMobile,Vehicle,Brand,Booking,Rent,Locations
 from Cart.models import cart
+from Orders.models import order,Status
 from .forms import DateForm
 # Create your views here.
 def AutomobileView(request):
@@ -113,3 +114,34 @@ def PickUp (request):
 	print (pickup)
 	return render(request,template,context)
 
+def Approve_Order(request):
+	template= "Admin/order-approve.html"
+	order_id=request.GET.get('val')
+	Order= order.objects.get(id=order_id)
+	cart_id=cart.objects.get(id=Order.Carts.id)
+	Auto=Rent.objects.filter(Cart=cart_id)
+	status=Status.objects.get(id=4)
+	for auto in Auto:
+		autos_id=auto.Automobile.id
+		avai=AutoMobile.objects.get(id=autos_id)
+		avai.Availability=False
+		avai.save()
+	Order.status=status
+	Order.save()
+	return render(request,template)
+
+def Cancel_Order(request):
+	template= "Admin/order-cancel.html"
+	order_id=request.GET.get('val')
+	Order= order.objects.get(id=order_id)
+	cart_id=cart.objects.get(id=Order.Carts.id)
+	Auto=Rent.objects.filter(Cart=cart_id)
+	status=Status.objects.get(id=5)
+	for auto in Auto:
+		autos_id=auto.Automobile.id
+		avai=AutoMobile.objects.get(id=autos_id)
+		avai.Availability=True
+		avai.save()
+	Order.status=status
+	Order.save()
+	return render(request,template)

@@ -47,7 +47,6 @@
                 </div>
             </div>
 
-          
 
             <div class="col-md-3 ">
                 <div class="just col1">
@@ -66,9 +65,9 @@
                     <div class="forcol">
                         <center> <h4><i style="  font-size: 60px; padding-top: 0px; display: inline-block;" class="la la-car"></i></h4></center>
                         <center><h4 style="display: inline-block">Transactions</h4></center>
-                        <center><h2>100</h2></center>
+                        <center><h2>{{orders}}</h2></center>
                     </div>
-                        <center><a href="transaction.html"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
+                        <center><a href="{% url 'transaction' %}"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
                 </div>
             </div>
             

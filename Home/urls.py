@@ -24,6 +24,8 @@ urlpatterns = [
 	url(r'^a-user/$', views.Load_user, name='load_user'),
 	url(r'^block-user/$', views.Block_user, name='block_user'),
 	url(r'^unblock-user/$', views.Unblock_user, name='unblock_user'),
+	url(r'^Transaction/$', views.Transactions, name='transaction'),
+	
 ]
 urlpatterns+=staticfiles_urlpatterns()
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

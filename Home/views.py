@@ -79,7 +79,7 @@ def auto_admin(request):
 	template="Home/admin.html"
 	automobiles = AutoMobile.objects.all()
 	users = CustomUser.objects.all().count()
-	orders = order.objects.all()
+	orders = order.objects.all().count()
 	locations=Locations.objects.all()
 	context ={
 	"automobiles":automobiles,
@@ -155,3 +155,13 @@ def Unblock_user(request):
 	"fullname":fullname
 	}
 	return HttpResponse(" unblocked "+fullname)
+
+def Transactions(request):
+	template = "Admin/transact.html"
+	Order = order.objects.all()
+	rent = Rent.objects.all()
+	context={
+	"order":Order,
+	'rent':rent,
+	}
+	return render(request, template, context)
