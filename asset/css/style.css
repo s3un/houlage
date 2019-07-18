@@ -1190,3 +1190,105 @@ nav ul li a:hover {
 .center{
     text-align: center;
 }
+
+/* admin */
+.adminbody  {
+    background-color: #5bc0de;
+}
+
+   .admin1   {
+      background: url(img/admin1.png); 
+      background-size: cover;
+  } 
+
+  .adheader {
+      font-size: 55px;
+      padding-top: 30px;
+  }
+  .adlink{
+     margin-top: 70px;
+     text-indent: 2px;
+     font-size: 18px;
+  }
+.text-light{
+    color: white;
+}
+  .col1 {
+      background-color: rgb(255, 255, 255);
+      box-shadow:rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  .secondrow    {
+      margin-top: 200px;
+      margin-bottom: 100px;
+  }
+
+  .fairrow {
+      margin-top: 90px;
+      margin-bottom: 100px;
+  }
+
+  .thirdrow    {
+    margin-top: 50px;
+}
+
+  .superhead, .super   {
+      border-bottom: 1px rgb(214, 214, 214) solid;
+  }
+
+  .superhead    {
+      padding-bottom: 30px;
+  }
+
+  .super    {
+    padding-bottom: 5px;
+}
+
+.body2  {
+    /* background-color: #fafafa; */
+    color: #ffffff;
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #87ceed);
+}
+
+/* .forcol {
+    border-bottom: 1px solid rgb(214, 214, 214);
+} */
+
+.justa  {
+    margin-top: 40px;
+}
+
+.adminform  {
+    border-radius: 100px;   
+}
+
+/* allusers */
+.allu   {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+.propic {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 15px;
+    border-radius: 100px;
+}
+
+.propic img {
+    width: 80px;
+    height: 80px;
+    max-width: 82px;
+    max-height: 82px;
+    border-radius: 100px;  
+}
+
+.adminbutton    {
+    border-radius: 100px;
+    width: 70px;
+    position: fixed;
+}
+/* allusers end */
