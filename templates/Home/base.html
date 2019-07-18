@@ -52,7 +52,9 @@
     </script>
 
 
+{%block script%}
 
+{%endblock%}
 
 <body>
     <nav class="hidden-xs">
@@ -110,13 +112,13 @@
     <div class="collapse navbar-collapse center" id="myNavbar">
       <ul class="nav navbar-nav ">
         <li><a href="{% url 'index' %}" class="{%if request.path == '/'%}active{% endif %}">Home</a></li>
-                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Cars</a></li>
+                <li><a href="{% url 'auto' %}" class="{%if request.path == '/Transport/Autos/' %}active{% endif %}" >Services</a></li>
                 {% if user.is_authenticated%}
                 <li><a href="{% url 'cart_home' %}" class="{%if request.path == '/Cart/' %}active{% endif %}">Cart</a></li>
-                <li class="dropdown">
+                <li class="dropdown ">
                    <p class="text-danger"> Welcome</p><a class="dropdown-toggle " data-toggle="dropdown" href="#"> {{request.user.username}}
                     <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu center">
                     <li><a href="{% url 'dashboard' %}">Dashboard</a></li> 
                      {% if user.is_staff%}
                     <li><a href="{% url 'auto_admin' %}">Admin</a></li>
