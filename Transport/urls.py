@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^Auto_detail/(?P<pk>\d+)/$', views.Auto_details, name='auto_details'),
     url(r'^order-approve/$', views.Approve_Order, name='approve_order'),
     url(r'^order-cancel/$', views.Cancel_Order, name='cancel_order'),
+    url(r'^edit-cars/$', views.Edit_cars, name='edit_cars'),
 
 ]
 urlpatterns+=staticfiles_urlpatterns()

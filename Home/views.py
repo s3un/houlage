@@ -77,7 +77,7 @@ def dashboard(request):
 
 def auto_admin(request):
 	template="Home/admin.html"
-	automobiles = AutoMobile.objects.all()
+	automobiles = AutoMobile.objects.all().count()
 	users = CustomUser.objects.all().count()
 	orders = order.objects.all().count()
 	locations=Locations.objects.all()

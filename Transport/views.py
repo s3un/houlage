@@ -145,3 +145,7 @@ def Cancel_Order(request):
 	Order.status=status
 	Order.save()
 	return render(request,template)
+
+def Edit_cars(request):
+	template="Admin/editcars.html"
+	return render(request,template)
