@@ -8,7 +8,8 @@
     <div class="wallcontent">
 
 <div class="container">
-   <div class="carsform">
+   <div class="carsform center">
+    <h3>Select Ride</h3>
         <form action="{% url 'load_auto' %}" id="carform" method="post" enctype="multipart/form-data" novalidate>
         	{% csrf_token%}
 
@@ -49,6 +50,9 @@
 <div class="container-fluid carslog">
     <div class="row">
         <div class="col-md-12 complete">
+          <div class="center">
+            <h3>Vehicle Catalogue</h3>
+          </div>
         {% for auto in automobile%}
             <div class="col-md-4">
                 <div class="cf">
