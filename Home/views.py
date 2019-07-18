@@ -78,7 +78,7 @@ def dashboard(request):
 def auto_admin(request):
 	template="Home/admin.html"
 	automobiles = AutoMobile.objects.all()
-	users = CustomUser.objects.all()
+	users = CustomUser.objects.all().count()
 	orders = order.objects.all()
 	locations=Locations.objects.all()
 	context ={
@@ -111,3 +111,47 @@ def contact(request):
 	template="Home/contact.html"
 
 	return render (request,template)
+
+def All_users(request):
+	template ="Home/allusers.html"
+	users = CustomUser.objects.all()
+	context = {
+	'users':users
+	}
+	return render(request,template,context)
+def Load_user(request):
+	template="Home/auser.html"
+	user_id = request.GET.get('val')
+	user = CustomUser.objects.get(id=user_id)
+	Order=order.objects.filter(user__id=user_id).count()
+	context={
+	'user':user,
+	'order':Order
+	}
+	return render(request,template, context)
+
+def Block_user(request):
+	template="Home/block-user.html"
+	user_id = request.GET.get('val')
+	user = CustomUser.objects.get(id=user_id)
+	fullname=user.last_name+" "+user.first_name
+	user.is_active=False
+	user.save()
+	context={
+	'user':user,
+	"fullname":fullname
+	}
+	return HttpResponse(" blocked "+fullname)
+
+def Unblock_user(request):
+	template="Home/block-user.html"
+	user_id = request.GET.get('val')
+	user = CustomUser.objects.get(id=user_id)
+	fullname=user.last_name+" "+user.first_name
+	user.is_active=True
+	user.save()
+	context={
+	'user':user,
+	"fullname":fullname
+	}
+	return HttpResponse(" unblocked "+fullname)

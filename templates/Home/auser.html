@@ -1,0 +1,58 @@
+<div class="modal-header">
+    <p class="modal-title" id="exampleModalLongTitle"> USER-PAGE- <span class="sentence">{{user.last_name}} {{user.first_name}}</span></p>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <center>
+        <div style="display: inline-block" class="propic">
+            <img src="{{user.picture.url}}">
+        </div>
+    </center>
+    <p class="sentence" style="display: block; margin-top: 20px;">{{user.last_name}} {{user.first_name}}</p>   
+    <p class="sentence" style="display: block;">Address: {{user.address}}</p>
+    <p class="sentence" style="display: block;">Phone Number: {{user.phone}}</p>
+    <p class="sentence" style="display: block;">Email: {{user.email}}</p>
+    <p class="sentence" style="display: block;">Total Cars Hired: {{order}};</p>  
+    <p class="sentence" style="display: block;">Total Cars Returned: 0;</p>
+    <p class="sentence" style="display: block;">Total Cars Returned: 0;</p>
+</div>
+<div class="modal-footer">
+   <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Delete User</button>-->
+    {% if user.is_active is True%}
+    <button type="button" class="btn btn-warning blocku" value="{{user.id}}"  data-dismiss="modal" data-url="{% url 'block_user' %}">Block User</button>
+    {% else %}
+    <button type="button" class="btn btn-success blocku" value="{{user.id}}"  data-dismiss="modal" data-url="{% url 'unblock_user' %}">Unblock User</button>
+    {% endif%}
+</div>
+
+<div class="modal fade" id="blockmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="block-content modal-content">
+                                
+                            </div>
+                            </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.blocku').unbind().click(function(e){
+            const val = e.target.value
+            const url = $('.blocku').attr('data-url')
+            console.log(val, url)
+            
+            $.ajax({
+                url:url,
+                data:{
+                    "val":val
+                },
+                success:function(data){
+
+                    // $("#blockmodal").modal();
+                    alert("You've Successfully"+data)
+                },
+            });
+        });
+    });
+</script>

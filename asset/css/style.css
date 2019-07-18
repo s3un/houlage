@@ -22,7 +22,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
 }
 
 .navbar-fixed-top   {
-    background-color : 	#87CEED;
+    background-color : 	#3da2de;
 
 }
 
@@ -142,7 +142,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
 /* footer */
 
 .panel-footer   {
-    background-color: #87CEED;
+    background-color: #3da2de;
     margin-bottom: 30px;
 }
 
@@ -270,7 +270,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
     display: block;
     width: 32px;
     height: 32px;
-    border: 2px solid  #87CEED;
+    border: 2px solid  #3da2de;
     background-size: 14px auto;
     border-radius: 50%;
     z-index: 2;
@@ -591,7 +591,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
     text-align: center;
     font-size: 19px;
     font-family: 'Heebo', sans-serif;
-    color: #5bc0de;
+    color: #3da2de;
 }
 
 .aboutbody  {
@@ -655,7 +655,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
 }
 
 .wallcontent    {
-    background-color: #87CEED;
+    background-color: #3da2de;
 }
 
 
@@ -1074,7 +1074,7 @@ nav ul  {
 }
 
 nav.black   {
-    background:  #87CEED;
+    background:  #3da2de;
 }
 
 nav ul li   {
@@ -1119,7 +1119,7 @@ nav ul li a:hover {
     background-color: #f1f1f1;
     width: 15%;
     height: 100%; 
-    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #87ceed);
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
     position: fixed;
   }
   
@@ -1193,7 +1193,7 @@ nav ul li a:hover {
 
 /* admin */
 .adminbody  {
-    background-color: #5bc0de;
+    background-color: #3da2de;
 }
 
    .admin1   {
@@ -1249,9 +1249,11 @@ nav ul li a:hover {
 .body2  {
     /* background-color: #fafafa; */
     color: #ffffff;
-    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #87ceed);
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
 }
-
+.bg-light{
+    background-color: white;
+}
 /* .forcol {
     border-bottom: 1px solid rgb(214, 214, 214);
 } */
@@ -1268,7 +1270,7 @@ nav ul li a:hover {
 .allu   {
     margin-top: 20px;
     margin-bottom: 20px;
-    border-bottom: 1px solid rgb(221, 221, 221);
+    /*border-bottom: 1px solid rgb(221, 221, 221);*/
 }
 
 .propic {
@@ -1289,6 +1291,9 @@ nav ul li a:hover {
 .adminbutton    {
     border-radius: 100px;
     width: 70px;
-    position: fixed;
+    /*position: fixed;*/
+}
+.sentence{
+    text-transform: capitalize;
 }
 /* allusers end */

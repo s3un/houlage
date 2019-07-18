@@ -1,0 +1,99 @@
+{% extends 'Home/signbase.html'%}
+{%block content%}
+<body class="adminbody">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                
+            </div>
+                
+            <div class="col-md-4">
+                <center><div class="adheader"><p>SOAR ADMIN</p></div></center>
+                <center><H3>CURRENT USERS</H3></center>
+            </div>
+                
+            <div class="col-md-4">
+                <div class="adlink">
+                <p class="text-danger">Welcome</p>
+                <p class="text-danger">{{request.user.username}} </p>/
+                <a class="text-light"href="{% url 'index' %}">Home</a>/
+                <a class="text-light"href="{% url 'logout' %}">Logout</a>
+                </div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div class="container thirdrow">
+    <div class="row">
+        <div class="col-md-12">
+            
+            <div class="col-md-8">
+               <div class="allu">
+                <table class="table">
+                    <tr class="center bg-light">
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    {% for auser in users %}
+                    {% if auser != request.user%}
+                    <tr>
+                        <td>
+                           <div style="display: inline-block" class="propic">
+                        <img src="{{auser.picture.url}}">
+                    </div>  
+                        </td>
+                        <td>
+                          <p class="sentence" style="display: inline-block; padding-left:90px;">{{auser.first_name}} {{auser.last_name}}</p>  
+                        </td>
+                     <!-- button -->
+                    <td><button style="margin-top: 20px;" type="button" class="btn adminbutton btn-danger mybutton" value="{{auser.id}}" data-url="{% url 'load_user' %}">Edit</button></td>   
+                    </tr>
+                    {%endif%}
+                   {% endfor%}
+
+                    
+                    </table>
+
+
+                                       <div class="modal fade" id="usermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content all-content">
+                                
+                            </div>
+                            </div>
+                    </div>
+                    <!-- endbutton -->
+               </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>
+{% endblock%}
+
+{% block scripts%}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.mybutton').unbind().click(function(e){
+            const val = e.target.value
+            const url = $('.mybutton').attr('data-url')
+            console.log(val, url)
+            
+            $.ajax({
+                url:url,
+                data:{
+                    "val":val
+                },
+                success:function(data){
+                    $("#usermodal").modal();
+                    $(".all-content").html(data)
+                },
+            });
+        });
+    });
+</script>
+{% endblock%}
