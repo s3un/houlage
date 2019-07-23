@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Gugi');
 @import url('https://fonts.googleapis.com/css?family=Cute+Font');
 @import url('https://fonts.googleapis.com/css?family=Heebo');
-
+p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
+     font-family: 'Oswald', sans-serif;
+}
 .bodytype   {
     height: 700px;
     background-image: url("/static/img/carscity.jpg");
@@ -20,7 +22,7 @@
 }
 
 .navbar-fixed-top   {
-    background-color : 	#87CEED;
+    background-color : 	#3da2de;
 
 }
 
@@ -28,11 +30,24 @@
 
 
 .circle {
-    border: 1px #ffbe3f solid;
+    /*border: 1px #ffbe3f solid;*/
+    padding: 2px;
+    box-shadow: rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+    border-radius: 4px;
+}   
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
 }
 
-
-
+.allu .btn{
+padding: 8px;
+}
+.alert{
+    padding: 8px;
+}
 
 /*.textwrap, .textwrap li a  {
     color: #000000;
@@ -42,8 +57,6 @@
 
 
 }*/
-
-
 
 .text  p, .logtext  {
     margin-top: 100px;
@@ -140,7 +153,7 @@
 /* footer */
 
 .panel-footer   {
-    background-color: #87CEED;
+    background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
     margin-bottom: 30px;
 }
 
@@ -268,7 +281,7 @@
     display: block;
     width: 32px;
     height: 32px;
-    border: 2px solid  #87CEED;
+    border: 2px solid  #3da2de;
     background-size: 14px auto;
     border-radius: 50%;
     z-index: 2;
@@ -589,7 +602,7 @@
     text-align: center;
     font-size: 19px;
     font-family: 'Heebo', sans-serif;
-    color: #5bc0de;
+    color: #3da2de;
 }
 
 .aboutbody  {
@@ -653,7 +666,7 @@
 }
 
 .wallcontent    {
-    background-color: #87CEED;
+    background-color: #3da2de;
 }
 
 
@@ -1072,7 +1085,7 @@ nav ul  {
 }
 
 nav.black   {
-    background:  #87CEED;
+    background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
 }
 
 nav ul li   {
@@ -1117,7 +1130,7 @@ nav ul li a:hover {
     background-color: #f1f1f1;
     width: 15%;
     height: 100%; 
-    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #87ceed);
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
     position: fixed;
   }
   
@@ -1185,3 +1198,168 @@ nav ul li a:hover {
       margin-left: 400px;
       margin-top: 40px;
   }
+.center{
+    text-align: center;
+}
+
+/* admin */
+.adminbody  {
+    background-color: #3da2de;
+}
+
+   .admin1   {
+      background: url(img/admin1.png); 
+      background-size: cover;
+  } 
+
+  .adheader {
+      font-size: 55px;
+      padding-top: 30px;
+      background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
+  }
+  .adlink{
+     margin-top: 70px;
+     text-indent: 2px;
+     font-size: 18px;
+  }
+.text-light{
+    color: white;
+}
+  .col1 {
+      background-color: rgb(255, 255, 255);
+      box-shadow:rgba(58,78,95,0.2) 0 2px 16px, rgba(58,78,95,0.05) 0 -5px 16px;
+      border-radius: 10px;
+      cursor: pointer;
+  }
+
+  .secondrow    {
+      margin-top: 200px;
+      margin-bottom: 100px;
+  }
+
+  .fairrow {
+      margin-top: 90px;
+      margin-bottom: 100px;
+  }
+
+  .thirdrow    {
+    margin-top: 50px;
+}
+
+  .superhead, .super   {
+      border-bottom: 1px rgb(214, 214, 214) solid;
+  }
+
+  .superhead    {
+      padding-bottom: 30px;
+  }
+
+  .super    {
+    padding-bottom: 5px;
+}
+
+.body2  {
+    /* background-color: #fafafa; */
+    color: #ffffff;
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
+}
+.bg-light{
+    background-color: white;
+}
+/* .forcol {
+    border-bottom: 1px solid rgb(214, 214, 214);
+} */
+
+.justa  {
+    margin-top: 40px;
+}
+
+.adminform  {
+    border-radius: 100px;   
+}
+
+/* allusers */
+.allu   {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    /*border-bottom: 1px solid rgb(221, 221, 221);*/
+}
+
+.propic {
+    height: 80px;
+    width: 80px;
+    margin-bottom: 15px;
+    border-radius: 100px;
+}
+
+.propic img {
+    width: 80px;
+    height: 80px;
+    max-width: 82px;
+    max-height: 82px;
+    border-radius: 100px;  
+}
+
+.adminbutton    {
+    border-radius: 100px;
+    width: 70px;
+    /*position: fixed;*/
+}
+.sentence{
+    text-transform: capitalize;
+}
+
+
+
+/* allusers end */
+
+/*new footer*/
+.panel-foot	{
+	background-color:  #3DA2DE;
+}
+
+.foottitle	{
+	font-size: 40px;
+	margin-top: 50px;
+    font-family:'Heebo', sans-serif;
+    color: #ffffff;
+}
+
+.foottitle2	{
+	font-size: 20px;
+	margin-top: 70px;
+    font-family:'Heebo', sans-serif;
+    color: #ffffff;
+}
+
+.inputfoot	{
+	width: 80%;
+	height:40px;
+	margin-left: 40px;
+	margin-top: 20px;
+}
+
+.footcol1	{
+	border-right: 1px solid red;
+}
+
+.lastpanel	{
+	background-color: rgb(231, 67, 67);
+}
+
+.last1	{
+	margin: 20px;
+	border-right: 1px solid #ffffff;
+	color: #ffffff;
+}
+
+.last1	a {
+	color: #ffffff;
+}
+
+.last2	{
+	margin: 10px;
+}
+
+

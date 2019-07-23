@@ -33,7 +33,9 @@
                    		<div class="col-md-6">
                         <div class="estimated">
                         <p style="font-family:'Heebo', sans-serif; font-size:15px; margin-left:20px; margin-top:10px; font-weight:bold; display:inline-block;">Estimated total</p>
-                         <h5  style="font-family:'Heebo', sans-serif; font-size:15px; display:inline-block; margin-top:10px; font-weight:bold;">&#8358;{{order.order_total}}</h5>
+                         <h5 style="font-family:'Heebo', sans-serif; font-size:15px; display:inline-block; margin-top:10px; font-weight:bold;">&#8358;<span class="total">{{order.order_total}}</span></h5>
+                         <input class="chek-email" type="hidden" value="{{request.user.email}}">
+                         <input class="chek-id" type="hidden" value="{{order.id}}">
                    </div>
                    		</div>
 
@@ -60,33 +62,27 @@
                              </div>
 
 							<input type="hidden" name="order_total" value="{{order.order_total}}">
-							{% if user.is_authenticated%}
-
-							{% else%}
-							<input type="text" name="License">
-							{% endif%}
                              <div class="col-md-12 pads">
                              	<div class="row new-form">
 
 
                                 </div>
                              </div>
-
-
-                             <div class="col-md-12 pads">
-                             	<div class="col-md-4">
-                             	<label for="card-element">
-						        Credit or debit card
-						      </label>
-                             	</div>
-                              <div class="col-md-8">
-						      <div id="card-element" class="StripeElement StripeElement--empty"><div class="__PrivateStripeElement" style="margin: 0px !important; padding: 0px !important; border: medium none !important; display: block !important; background: transparent none repeat scroll 0% 0% !important; position: relative !important; opacity: 1 !important;"><iframe allowtransparency="true" scrolling="no" name="__privateStripeFrame5" allowpaymentrequest="true" src="https://js.stripe.com/v3/elements-inner-card-31bf44cd4b7f3b6da4e3f1268a2aa532.html#style[base][color]=%2332325d&amp;style[base][fontFamily]=%22Helvetica+Neue%22%2C+Helvetica%2C+sans-serif&amp;style[base][fontSmoothing]=antialiased&amp;style[base][fontSize]=16px&amp;style[base][::placeholder][color]=%23aab7c4&amp;style[invalid][color]=%23fa755a&amp;style[invalid][iconColor]=%23fa755a&amp;componentName=card&amp;wait=false&amp;rtl=false&amp;keyMode=test&amp;origin=https%3A%2F%2Fstripe.com&amp;referrer=https%3A%2F%2Fstripe.com%2Fdocs%2Fstripe-js&amp;controllerId=__privateStripeController1" title="Secure payment input frame" style="border: medium none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; height: 19.2px;" frameborder="0"></iframe><input class="__PrivateStripeElement-input" aria-hidden="true" aria-label=" " autocomplete="false" maxlength="1" style="border: medium none !important; display: block !important; position: absolute !important; height: 1px !important; top: 0px !important; left: 0px !important; padding: 0px !important; margin: 0px !important; width: 100% !important; opacity: 0 !important; background: transparent none repeat scroll 0% 0% !important; pointer-events: none !important; font-size: 16px !important;"></div></div></div>
-
-						      <!-- Used to display form errors. -->
-						      <div id="card-errors" role="alert"></div>
+                             <div  class="col-md-12 pads">
+                             <!-- {% comment %} <a class="flwpug_getpaid" 
+  data-PBFPubKey="FLWPUBK_TEST-893967261e333ea291432397b498669b-X" 
+  data-txref="rave-123456" 
+  data-amount="2000" 
+  data-customer_email="user@example.com" 
+  data-currency="NGN" 
+  data-pay_button_text="Pay Now" 
+  data-country="NG" 
+  data-redirect_url="https://your-website.com/urlredirect"></a> {% endcomment %} -->
+                              <div id="paystackEmbedContainer"></div>  
+                              
+                               
+                              </div>
                              </div>
-
-                             <center><button class="btn-danger">Submit Payment</button></center>
                          </form>
                           	</div>
                          </div>
@@ -115,14 +111,13 @@
         </div>
     </div>
 </div>
-<iframe allowtransparency="true" scrolling="no" name="__privateStripeController1" allowpaymentrequest="true" src="https://js.stripe.com/v3/controller-d87ddc0145c66826814f1428b5e7b170.html#apiKey=pk_test_ivgtaBziZaAJym3lyiIk6SYx00r3m8hSfF&amp;stripeJsId=20e33de4-7f4f-4aea-a9f4-78781a3b70bf&amp;origin=https%3A%2F%2Fstripe.com&amp;referrer=https%3A%2F%2Fstripe.com%2Fdocs%2Fstripe-js&amp;controllerId=__privateStripeController1" aria-hidden="true" tabindex="-1" style="border: medium none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important;" frameborder="0"></iframe>
-
-  <iframe allowtransparency="true" scrolling="no" name="__privateStripeMetricsController0" allowpaymentrequest="true" src="https://js.stripe.com/v2/m/outer.html#url=https%3A%2F%2Fstripe.com%2Fdocs%2Fstripe-js&amp;title=&amp;referrer=&amp;muid=d4bd8d39-f920-460c-8f0a-930dd0f996d8&amp;sid=c6ce7b9f-c695-429e-9087-fbdc78a09d95&amp;preview=true" aria-hidden="true" tabindex="-1" style="border: medium none !important; margin: 0px !important; padding: 0px !important; width: 1px !important; min-width: 100% !important; overflow: hidden !important; display: block !important; visibility: hidden !important; position: fixed !important; height: 1px !important; pointer-events: none !important;" frameborder="0"></iframe>
 {% endblock %}
 {% block scripts%}
 <script src="{% static 'js/jquery.js' %}"></script>
-<script src="https://js.stripe.com/v3/"></script>
-<script src="{% static 'js/stripes.js' %}"></script>
+<!-- <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script> -->
+<!--<script src="https://js.stripe.com/v3/"></script>-->
+ <script src="https://js.paystack.co/v1/inline.js"></script> 
+
 <script>
     $("#pickup").change(function () {
       var url = $("#pickup-form").attr("data-pickup-url");
@@ -139,6 +134,60 @@
       });
 
     });
+    let total= $('.total').text() *100
+    let email=$('.chek-email').attr('value')
+    let id=$('.chek-id').attr('value')
+    PaystackPop.setup({
+      key: 'pk_test_74ef25e576096b2407b74e201a49ffddb54c1344',
+      email:email,
+      amount:total,
+      container:'paystackEmbedContainer',
+      callback:function(response){
+        // alert('succesful payment '+response.reference)
+        $.ajax({
+            url:"update_order/",
+            data:{
+                'order_id':id,
+                // 'refrence':response.reference
+            },
+            success:function(data){
+                alert(data)
+            }
+        });
+      },
+    });
+    // const API_publicKey = "FLWPUBK_TEST-893967261e333ea291432397b498669b-X";
+
+    // function payWithRave() {
+    //     var x = getpaidSetup({
+    //         PBFPubKey: API_publicKey,
+    //         customer_email: "user@example.com",
+    //         amount: 2000,
+    //         customer_phone: "234099940409",
+    //         currency: "NGN",
+    //         txref: "rave-123456",
+    //         meta: [{
+    //             metaname: "flightID",
+    //             metavalue: "AP1234"
+    //         }],
+    //         onclose: function() {},
+    //         callback: function(response) {
+    //             var txref = response.tx.txRef; // collect txRef returned and pass to a          server page to complete status check.
+    //             console.log("This is the response returned after a charge", response);
+    //             if (
+    //                 response.tx.chargeResponseCode == "00" ||
+    //                 response.tx.chargeResponseCode == "0"
+    //             ) {
+    //                 alert("success")
+    //             } else {
+    //                alert("failed")
+    //             }
+
+    //             x.close(); // use this to close the modal immediately after payment.
+    //         }
+    //     });
+    // }
+
 
 </script>
 {% endblock%}

@@ -1,28 +1,89 @@
-{%extends 'Home/base.html'%}
+{%extends 'Home/signbase.html'%}
 
 {% block content%}
-<div class="Aoto" style="padding-top:70px;">
-	<center><h1>Automobiles </h1><a href="{% url 'create_car' %}"> Add new car</a></center>
-<table class="table table-condensed table-bordered">
-	<tr>
-		<th>S/N</th>
-		<th>Brand</th>
-		<th>Model</th>
-		<th>Availability</th>
-		<th>Actions</th>
-	</tr>
-	{% for autos in automobiles%}
-	<tr>
-		<td>{{forloop.counter}}</td>
-		<td>{{autos.Brands}}</td>
-		<td>{{autos.Model}}</td>
-		<td>{{autos.Availability}}</td>
-		<td style="align-items:center;">
-			<span class="glyphicon glyphicon-pencil"></span><span style="margin-left:3%; color:red;" class="glyphicon glyphicon-minus"></span>
-		</td>
-	</tr>
-	{% endfor%}
-</table>	
+<body class="">
+
+<div class="sidenav">
+
+</div>
+
+
+<div class="container-fluid">
+    <div class="row adheader">
+        <div class="col-md-12 ">
+            <div class="col-md-4">
+            
+            </div>
+            
+            <div class="col-md-4">
+                <center><div class="">
+                    <p>SOAR ADMIN</p>
+                </div></center>
+            </div>
+            
+            <div class="col-md-4 ">
+            	<div class="adlink">
+            	<p class="text-danger">Welcome</p>
+            	<p class="text-danger">{{request.user.username}} </p>/
+            	<a class="text-light"href="{% url 'index' %}">Home</a>/
+            	<a class="text-light"href="{% url 'logout' %}">Logout</a>
+            	</div>
+            </div>                
+        </div>
+    </div>
+</div>
+
+<div class="container thirdrow">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-3 ">
+                <div class="just col1">
+                    <div class="forcol">
+                        <center><h4><i style="  font-size: 60px; padding-top: 0px; display: inline-block;" class="la la-users"></i></h4></center>
+                        <center><h4 style="display: inline-block">All Users</h4></center>
+                        <center><h2>{{users}}</h2></center>
+                    </div>
+                    <center><a href="{%url 'all_user'%}"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 ">
+                <div class="just col1">
+                    <div class="forcol">
+                        <center> <h4><i style="font-size: 60px; padding-top: 0px; display: inline-block;" class="la la-file"></i></h4></center>
+                        <center><h4 style="display: inline-block">Reciept</h4></center>
+                        <center><h2>100</h2></center>
+                    </div>
+                    <center><a href="reciepts.html"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="just col1">
+                    <div class="forcol">
+                        <center> <h4><i style="  font-size: 60px; padding-top: 0px; display: inline-block;" class="la la-car"></i></h4></center>
+                        <center><h4 style="display: inline-block">Transactions</h4></center>
+                        <center><h2>{{orders}}</h2></center>
+                    </div>
+                        <center><a href="{% url 'transaction' %}"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <div class="just col1">
+                    <div class="forcol">
+                        <center> <h4><i style="  font-size: 60px; padding-top: 0px; display: inline-block;" class="la la-car"></i></h4></center>
+                        <center><h4 style="display: inline-block">Cars</h4></center>
+                        <center><h2>{{automobiles}}</h2></center>
+                    </div>
+                    <center><a href="{% url 'edit_cars' %}"><button style="margin-top: 20px;" class="btn carbutton btn-danger">View</button></a></center>
+                </div>
+            </div>
+          
+        </div>
+    </div>
 </div>
 
 {% endblock%}

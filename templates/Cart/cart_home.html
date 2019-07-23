@@ -21,9 +21,9 @@
 {% block content%}
 <div style="padding-top:70px;"></div>
 <h1>Bookings</h1>
-{% for ren in rents_obj%}
+<!--{% for ren in rents_obj%}
 <p>{{ren.pk}}</p>
-{% endfor %}
+{% endfor %}-->
 {% if rents_obj %}
 <div class="row">
 <div class="col-md-12" >
@@ -37,7 +37,6 @@
 			<th>Pickup Date</th>
 			<th>Return Date</th>
 			<th>Driver @ &#8358;75/day</th>
-			<th>Unit Cost</th>
 		</tr>
 		</thead>
 		<tbody>
@@ -48,19 +47,19 @@
 					<a href=" {% url 'remove_rent' rpk=mobile.pk %}">remove?</a>
 				</small></td>
 				<td>&#8358;{{mobile.Automobile.Cost}}/day</td>
-				<td>{{mobile.pickup_date.date}}</td>
-				<td>{{mobile.return_date.date}}</td>
+				<td>{{mobile.pickup_date}}</td>
+				<td>{{mobile.return_date}}</td>
 				<td>&#8358;{{mobile.Cost}}/{{mobile.days}} days</td>
 			</tr>
 			{% endfor%}
 			<form method="post" action="{% url 'checkout' %}">
 				{% csrf_token%}
 			<tr>
-				<td colspan="6"></td>
+				<td colspan="5"></td>
 				<td><b>Subtotal:</b> &#8358; {{carts.subtotal}}</td>
 			</tr>
 			<tr>
-				<td colspan="6"></td>
+				<td colspan="5"></td>
 				<td><b>Total:</b>&#8358;{{carts.total}}
 					<button type="submit" class="btn btn-danger">Proceed to Checkout</button>
 

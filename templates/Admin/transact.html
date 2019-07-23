@@ -1,0 +1,136 @@
+{% extends 'Home/signbase.html'%}
+
+{%block content%}
+<body class="">
+<div class="container-fluid">
+    <div class="row adheader">
+        <div class="col-md-12">
+            <div class="col-md-4">
+            
+            </div>
+            
+            <div class="col-md-4">
+                <center><div class="">
+                    <p>SOAR ADMIN</p>
+					<div class="center">
+						<h3>Past Transactions</h3>
+					</div>
+                </div></center>
+            </div>
+            
+            <div class="col-md-4 ">
+            	<div class="adlink">
+            	<p class="text-danger">Welcome</p>
+            	<p class="text-danger">{{request.user.username}} </p>/
+            	<a class="text-light"href="{% url 'index' %}">Home</a>/
+            	<a class="text-light"href="{% url 'logout' %}">Logout</a>
+            	</div>
+            </div>                
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+        	
+            <div class="col-md-8">
+				{% for orders in order%}
+                <div class="allu circle">
+                   <p style="display: block;">Name: {{orders.user.first_name}} {{orders.user.last_name}}</p>
+                   <p style="display: block; ">Reference Code: {{orders.order_id}}</p>
+                  
+                  
+                  
+				<div class="approve" style="display:inline-block">
+					{% if orders.status.status == 'Created' or orders.status.status == 'Paid' %}
+					{% if orders.status.status == 'Created'%}
+					<h6 style="display:inline-block;" class="sentence">Status: <span class="alert alert-info">Created Awaiting Approval</span></h6>
+                    {% elif orders.status.status == 'Paid'%}
+					<h6 style="display:inline-block;" class="sentence">Status: <span class="alert alert-info">Paid Awaiting Approval</span></h6>
+					{% endif %}
+					<button value="{{orders.id}}" data-url="{% url 'approve_order' %}" class="appr-btn btn btn-Success">Approve Order</button>
+                    <button value="{{orders.id}}" data-url="{% url 'cancel_order' %}" class="disa-btn btn btn-warning">Cancel Order</button>
+                    {% elif orders.status.status == 'Approved'%}
+					<h6 style="display:inline-block;">Status: <span class="alert alert-success">Order Approved</span> </h6>
+					<button style="display:inline-block;" value="{{orders.id}}" data-url="{% url 'cancel_order' %}" class="disa-btn btn btn-warning">Cancel Order</button>
+					{% elif orders.status.status == 'Cancel'%}
+					<h6 style="display:inline-block;">Status: <span class="alert alert-danger">Order Canceled </span> </h6>
+					<button style="display:inline-block;" value="{{orders.id}}" data-url="{% url 'approve_order' %}" class="appr-btn btn btn-Success">Approve Order</button>
+                    {%endif%}
+                 </div>
+                 <!--<button value="{{orders.id}}" class="hired-cars btn btn-danger">Delete Order</button>-->
+ 				<button class="hired-cars btn btn-info">Show Hired cars</button>
+				
+
+                   <div class="dis"style="display:none;">
+                   	<h3>Hired cars</h3>
+                   	<ul  >
+                   	 {% for rents in rent%}
+                   	 {% if rents.Cart == orders.Carts%}
+                   	<li class="">{{rents.Automobile}}</li>	
+                   	{% endif%}
+                   	{% endfor%}	
+                   	</ul>
+                   			
+                   </div>
+                     
+                   
+                   <!-- <button style="margin-left: 20px;" class="btn carbutton btn-danger">View</button> -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{%endblock%}
+
+{% block scripts%}
+<script type="text/javascript">
+$(function(){
+	$('.hired-cars').unbind().click(function(e){
+		if(e.target.nextElementSibling.style.display=='block'){
+			e.target.innerHTML="Show Hired cars"
+			e.target.nextElementSibling.style.display='none'
+		}
+		else{
+			e.target.innerHTML="Hide hired Cars"
+e.target.nextElementSibling.style.display='block'
+		}
+		
+	});	
+$('.appr-btn').unbind().click(function(e){
+	e.preventDefault();
+	let val=e.target.value
+	console.log(e.target.parentElement)
+	let url = $('.appr-btn').attr('data-url')
+	$.ajax({
+		url:url,
+		data:{
+			'val':val
+		},
+		success:function(data){
+			e.target.parentElement.innerHTML=data
+		}
+	})
+});
+$('.disa-btn').unbind().click(function(e){
+	e.preventDefault();
+	let val=e.target.value
+	console.log(e.target.parentElement)
+	let url = $('.disa-btn').attr('data-url')
+	$.ajax({
+		url:url,
+		data:{
+			'val':val
+		},
+		success:function(data){
+			e.target.parentElement.innerHTML=data
+		}
+	})
+});
+});
+
+</script>
+{%endblock%}

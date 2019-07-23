@@ -1,0 +1,78 @@
+{% extends 'Home/signbase.html'%}
+{% load staticfiles%}
+{% load socialaccount %}
+{% load crispy_forms_tags%}
+{%block style%}
+<style type="text/css">
+	label {
+		display: none;
+	}
+</style>
+{% endblock%}
+{% block content %}
+<body class="signbody">
+
+<div class="container-fluid">
+    <div class="row">
+<div class="col-md-12">
+            <div class="col-md-8">
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+               <div class="signuplog">
+                  <center>
+                    <h4>
+                        <a href="{% url 'index' %}" class=""><i class="glyphicon glyphicon-home"></i></a>
+                        <a href="{% url 'account_login' %}" class="">LOGIN</a></h4>
+                   </center> 
+               </div>
+            </div>
+
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-8  hidden-xs">
+                <p class="uptext">SIGN UP TO GET AQUAINTED. </p>
+            </div>
+
+
+            <div class="col-md-3 col-xs-12 realworld">
+                <div class="logheader">
+                    <center><p>SIGNING UP</p></center>
+                </div>
+
+                <form method="post">
+                	{% csrf_token%}
+ <!--                   <div class="form-group">
+                        <input type="name" class="form-control putcontrol" placeholder="Username">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control putcontrol2" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control putcontrol2" placeholder="Re-Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control putcontrol2" id="exampleInputPassword1" placeholder="Email">
+                    </div>
+
+                    <div class="form-check gap">
+                        <center> <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Terms and Condition</label></center>
+                    </div>-->
+                    {{form|crispy}}
+                    <center><button type="submit" class="btn btn-primary upbutton gap">Submit</button><center>
+                </form>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+{% endblock %}

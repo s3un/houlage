@@ -3,6 +3,21 @@
 {% load crispy_forms_tags %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/jquery.datetimepicker.min.css' %}">
+<style type="text/css">
+	nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding-left: 90px;
+    background: rgba(0,0,0,0.1);
+    /* box-sizing: border-box; */
+    transition: .5s;
+    z-index: 1;
+}
+</style>
+
 {% endblock%}
 {% block content%}
 <div class="container selfcar "style="padding-top:70px;">
@@ -60,7 +75,11 @@
                     </div>
 
                 </div>
+                {% if details.Availability is True%}
 				<center><a href="{% url 'remove_rent' rpk=rent.pk %}"><button class="btn btn-danger personalbutton">Remove from Bookings?</button></a></center>
+                {%else%}
+                <center><h6 class="alert alert-info personalbutton">Car Not Available</h6></center>
+                {% endif%}
                  {% endfor%}
 				{% else %}
                 <form class="formedit"method="POST" action="{% url 'rent' %} ">
@@ -96,7 +115,12 @@
 
                 </div>
 				<input type="hidden" name="automobile" value="{{details.pk}}">
+                    {% if details.Availability is True%}
                     <center><button class="btn btn-danger personalbutton">Add to Bookings</button></center>
+                    {%else%}
+                    <center><button class="btn disabled alert alert-info ">Car Not Available</button></center>
+                    {% endif%}
+
 				{% endif %}
 			</form>
             </div>
@@ -110,23 +134,23 @@
 <script type="text/javascript">
     $(function() {
         $("#id_pickup_date").datetimepicker({
-            format:'Y-m-d H:i',
+            format:'Y-m-d',
             minDate:'0',
             maxDate:'+1970/01/07',
-            minTime:0,
+            timepicker:false,
 
         });
+        
         $("#id_return_date").datetimepicker({
-            format:'Y-m-d H:i',
+            format:'Y-m-d',
             onShow:function( ct ){
             this.setOptions({
             minDate:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
-            minTime:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
             })
             },
             maxDate:'+1970/01/07',
 
-            maxTime:'21:00',
+            timepicker:false,
         });
     });
 </script>

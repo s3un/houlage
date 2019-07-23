@@ -14,7 +14,10 @@ urlpatterns = [
 	url(r'^Pickup/$', views.PickUp, name='pickup'),
 	url(r'^Remove_Rent/(?P<rpk>\d+)$', views.RemoveRent, name='remove_rent'),
     url(r'^Auto_detail/(?P<pk>\d+)/$', views.Auto_details, name='auto_details'),
-
+    url(r'^order-approve/$', views.Approve_Order, name='approve_order'),
+    url(r'^order-cancel/$', views.Cancel_Order, name='cancel_order'),
+    url(r'^edit-cars/$', views.Edit_cars, name='edit_cars'),
+	url(r'^load-cars/$', views.Load_cars, name='load_car'),
 
 ]
 urlpatterns+=staticfiles_urlpatterns()

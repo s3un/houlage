@@ -8,6 +8,7 @@ urlpatterns = [
 	url(r'^$', views.Cart_home, name='cart_home'),
 	url(r'^cart_update/$', views.Cart_Update, name='cart_update'),
 	url(r'^Checkout/$', views.CheckoutView, name='checkout'),
+	url(r'^Checkout/update_order/$', views.UpdateOrder, name='update_order'),
 
 ]
 urlpatterns+=staticfiles_urlpatterns()
