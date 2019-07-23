@@ -68,22 +68,22 @@
 {% endblock %}
 {% block content%}
 <div class="hidden-xs">
-<div class=" tab">
-    <div class="profilename">
-        <p>{{user.last_name}} {{user.first_name}}</p>
+    <div class=" tab">
+        <div class="profilename">
+            <p>{{user.last_name}} {{user.first_name}}</p>
+        </div>
+        <div class="profilebox">
+            <img src="{{user.picture.url}}">
+        </div>
+        <button style="font-family:'Heebo', sans-serif; margin-top:20px;" class="tablinks" onclick="openCity(event, 'Paris')"><i style="padding-right:20px;" class="la la-tachometer"></i>Dashboard</button>
+        <button style=" font-family:'Heebo', sans-serif; " class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"><i style="padding-right:20px;"class="la la-user"></i>Pofile</button>
+        <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Tokyo')"><i style="padding-right:20px;" class="la la-map-o"></i>Map</button>
+        <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Setting')"><i style="padding-right:20px;" class="la la-wrench"></i>Settings</button>
+        <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Tokyo')"><i  style="padding-right:20px;" class="la la-sign-out"></i>logOut</button>
     </div>
-    <div class="profilebox">
-        <img src="{{user.picture.url}}">
-    </div>
-    <button style="font-family:'Heebo', sans-serif; margin-top:20px;" class="tablinks" onclick="openCity(event, 'Paris')"><i style="padding-right:20px;" class="la la-tachometer"></i>Dashboard</button>
-    <button style=" font-family:'Heebo', sans-serif; " class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen"><i style="padding-right:20px;"class="la la-user"></i>Pofile</button>
-    <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Tokyo')"><i style="padding-right:20px;" class="la la-map-o"></i>Map</button>
-    <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Setting')"><i style="padding-right:20px;" class="la la-wrench"></i>Settings</button>
-    <button style="font-family:'Heebo', sans-serif;" class="tablinks" onclick="openCity(event, 'Tokyo')"><i  style="padding-right:20px;" class="la la-sign-out"></i>logOut</button>
-</div>
 
-<div>
-    <div class="newdash">
+    <div>
+        <div class="newdash">
         <div id="London" class="tabcontent">
           <!-- <div class="col-md-12">
       
@@ -394,10 +394,488 @@
 
         </div> 
       </div>
-</div>
+    </div>
 
 
 
   
 </div>
-{% endblock%}
+
+<div class=" hidden-lg">
+    <!-- <nav>
+    
+    
+
+<div class="container firstdash">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage quickhire">
+                             <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-heart"></span>
+                        <div class="dashtext">
+                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px;">Favourite</h3>
+                        </div>
+        
+                        <div class="dashcontent">
+                            <h1 style=" color: #ffffff;">12</h1>
+                        </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6 ">
+                        <div class="dashimage3 quickhire ">
+                                 <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ban-circle"></span>
+                            <div class="dashtext">
+                                <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Issues</h3>
+                            </div>
+        
+                            <div class="dashcontent">
+                                <h1 style=" color: #ffffff;">400</h1>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage1 quickhire">
+                            <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-eye-open"></span>
+                            <div class="dashtext">
+                                <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Views</h3>
+                            </div>
+        
+                            <div class="dashcontent">
+                                <h1 style=" color: #ffffff;">400</h1>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage2 quickhire">
+                                 <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ok-circle"></span>
+                        <div class="dashtext">
+                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Hired</h3>
+                        </div>
+        
+                        <div class="dashcontent">
+                            <h1 style=" color: #ffffff;">12</h1>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-9">
+                <center><p class="quicksearch">QUICK SEARCH</p></center> 
+              <form>
+                  <div class="form-group dashform">
+                        <center><label class="dashlabel">Vehicle</label></center> 
+                      <select style="border-radius: 350px;" class="form-control">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                          <option>cars</option>
+                      </select>
+                  </div>
+
+                   <div class="form-group dashform1">
+                        <center><label>Brand</label></center>
+                      <select class="form-control" style="border-radius: 350px;">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                      </select>
+                  </div>
+
+                   <div class="form-group dashform1">
+                        <center><label>Model</label></center>
+                      <select class="form-control" style="border-radius: 350px;">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                      </select>
+                  </div>
+                  <button type="submit" style="border-radius: 350px;" class="btn btn-danger">View</button>
+              </form>
+            </div>
+
+            <div class="col-md-3 circle">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid seconddash">
+        <div class="row dashmarg">
+            <div class="col-md-12">
+                <div class="col-md-3 notification">
+                   <div class="compeletdash quickhire">
+                        <div class="noteheader">
+                        <li style="margin-left:10px;" class="la la-reply"></li><h4>Previous Transactions</h4>
+                        </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
+                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
+                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
+                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
+                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
+                    </div>
+                   </div> 
+                </div>
+    
+                <div class="col-md-3 ">
+                    <div class="compeletdash quickhire">
+                             <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-exclamation"></li><h4>New in</h4>
+                        </div>
+    
+                        <div class="dash-cont">
+                          <h5 style="margin-left:10px;" class="h5-set">Toyota avensis 2017</h5><button style="margin-right:10px;"  class="btn btn-danger">view</button>
+                        </div>
+    
+                        <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+    
+                         <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+    
+                         <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-3 ">
+                   <div class="compeletdash quickhire">
+                       <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-bell"></li><h4>Notification</h4>
+                        </div>
+    
+                        <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                        </div>
+                   </div>
+                </div>
+    
+    
+                <div class="col-md-3 notification">
+                    <div class="compeletdash quickhire">
+                        <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-bell"></li><h4>Notification</h4>
+                        </div>
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div> -->
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#profile"><i style="padding-right:5px;"class="la la-user"></i>Profile</a></li>
+    <li><a data-toggle="tab" href="#dashboard"><i style="padding-right:5px;" class="la la-tachometer"></i>Dashboard</a></li>
+    <li><a data-toggle="tab" href="#map"><i style="padding-right:5px;" class="la la-map-o"></i>Map</a></li>
+    <li><a data-toggle="tab" href="#settings">Settings</a></li>
+  </ul>
+
+<div class="tab-content">
+    <div id="profile" class="tab-pane fade in active">
+        <div class="col-md-12">
+            <div class="profile2">
+                <div class="newprofile1">
+                    <img src="img/benzolin.jpg" >
+                </div>
+
+                <div class="newbody">
+                    <div class="newdash">
+                        <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px; margin-top: 40px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
+                    </div>
+
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >FIRST-NAME: OLUWASEUN</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >LAST-NAME: OYEBOWALE</p>
+                </div>
+
+                <div class="newbody">
+                    <div class="newdash">
+                        <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px; margin-top: 40px;"><i style="padding-right:10px;"class="la la-exchange"></i>Contact</p>
+                    </div>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block;" >ADDRESS: 54, PRINCE FADINA STREET, OTA OGUN STATE.</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >MOBILE: 09037261648</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >EMAIL: getalife@gmail.com</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <div id="dashboard" class="tab-pane fade">
+        <div class="container firstdash">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage quickhire">
+                             <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-heart"></span>
+                        <div class="dashtext">
+                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px;">Favourite</h3>
+                        </div>
+        
+                        <div class="dashcontent">
+                            <h1 style=" color: #ffffff;">12</h1>
+                        </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6 ">
+                        <div class="dashimage3 quickhire ">
+                                 <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ban-circle"></span>
+                            <div class="dashtext">
+                                <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Issues</h3>
+                            </div>
+        
+                            <div class="dashcontent">
+                                <h1 style=" color: #ffffff;">400</h1>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage1 quickhire">
+                            <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-eye-open"></span>
+                            <div class="dashtext">
+                                <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Views</h3>
+                            </div>
+        
+                            <div class="dashcontent">
+                                <h1 style=" color: #ffffff;">400</h1>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-3 col-xs-6">
+                        <div class="dashimage2 quickhire">
+                                 <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ok-circle"></span>
+                        <div class="dashtext">
+                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Hired</h3>
+                        </div>
+        
+                        <div class="dashcontent">
+                            <h1 style=" color: #ffffff;">12</h1>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-9">
+                <center><p class="quicksearch">QUICK SEARCH</p></center> 
+              <form>
+                  <div class="form-group dashform">
+                        <center><label class="dashlabel">Vehicle</label></center> 
+                      <select style="border-radius: 350px;" class="form-control">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                          <option>cars</option>
+                      </select>
+                  </div>
+
+                   <div class="form-group dashform1">
+                        <center><label>Brand</label></center>
+                      <select class="form-control" style="border-radius: 350px;">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                      </select>
+                  </div>
+
+                   <div class="form-group dashform1">
+                        <center><label>Model</label></center>
+                      <select class="form-control" style="border-radius: 350px;">
+                           <option></option>
+                          <option>Trucks</option>
+                          <option>Pick up Van</option>
+                          <option>Tankers</option>
+                      </select>
+                  </div>
+                  <button type="submit" style="border-radius: 350px;" class="btn btn-danger">View</button>
+              </form>
+            </div>
+
+            <div class="col-md-3 circle">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid seconddash">
+        <div class="row dashmarg">
+            <div class="col-md-12">
+                <div class="col-md-3 notification">
+                   <div class="compeletdash quickhire">
+                        <div class="noteheader">
+                        <li style="margin-left:10px;" class="la la-reply"></li><h4>Previous Transactions</h4>
+                        </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
+                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
+                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
+                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
+                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
+                    </div>
+                   </div> 
+                </div>
+    
+                <div class="col-md-3 ">
+                    <div class="compeletdash quickhire">
+                             <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-exclamation"></li><h4>New in</h4>
+                        </div>
+    
+                        <div class="dash-cont">
+                          <h5 style="margin-left:10px;" class="h5-set">Toyota avensis 2017</h5><button style="margin-right:10px;"  class="btn btn-danger">view</button>
+                        </div>
+    
+                        <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+    
+                         <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+    
+                         <div class="dash-cont">
+                            <h5 style="margin-left:10px;" class="h5-set">Benz G-Class</h5><button style="margin-right:10px;" class="btn btn-danger">view</button>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-3 ">
+                   <div class="compeletdash quickhire">
+                       <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-bell"></li><h4>Notification</h4>
+                        </div>
+    
+                        <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                        </div>
+                   </div>
+                </div>
+    
+    
+                <div class="col-md-3 notification">
+                    <div class="compeletdash quickhire">
+                        <div class="noteheader">
+                            <li style="margin-left:10px;" class="la la-bell"></li><h4>Notification</h4>
+                        </div>
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is hey almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+    
+                    <div class="dash-cont">
+                        <h5 style="margin-left:10px;">Your last car Hire, is almost due.</h5>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div id="map" class="tab-pane fade">
+    
+  </div>
+
+
+  <div id="settings" class="tab-pane fade">
+    <div class="col-md-11 profile1">
+        <div class="newdash">
+            <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
+        </div>
+          <form>
+          <div class="form-group">
+              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="First Name" />
+              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Last Name" />
+              <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="text" placeholder="" />
+          </div>
+          </form>
+      </div>
+
+      <div class="col-md-11 profile1">
+          <div class="newdash">
+              <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-exchange"></i>Contact</p>
+          </div>
+          <form>
+          <div class="form-group">
+              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Address" />
+              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Phone" />
+              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Email" />
+          </div>
+          </form>
+      </div>
+
+      <div class="col-md-11 profile1">
+          <div class="newdash">
+              <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-key"></i>Change Password</p>
+          </div>
+              <form>
+                  <div class="form-group">
+                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="Current Passowrd" />
+                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="New Passowrd" />
+                      <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="Password" placeholder="Confirm Password" />
+                  </div>
+              </form>
+      </div>
+      <center><button style="width:400px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+  </div>
+</div>
+
+
+</div>
+
+    {% endblock%}
