@@ -43,9 +43,13 @@
                   
                   
 				<div class="approve" style="display:inline-block">
+					{% if orders.status.status == 'Created' or orders.status.status == 'Paid' %}
 					{% if orders.status.status == 'Created'%}
 					<h6 style="display:inline-block;" class="sentence">Status: <span class="alert alert-info">Created Awaiting Approval</span></h6>
-                    <button value="{{orders.id}}" data-url="{% url 'approve_order' %}" class="appr-btn btn btn-Success">Approve Order</button>
+                    {% elif orders.status.status == 'Paid'%}
+					<h6 style="display:inline-block;" class="sentence">Status: <span class="alert alert-info">Paid Awaiting Approval</span></h6>
+					{% endif %}
+					<button value="{{orders.id}}" data-url="{% url 'approve_order' %}" class="appr-btn btn btn-Success">Approve Order</button>
                     <button value="{{orders.id}}" data-url="{% url 'cancel_order' %}" class="disa-btn btn btn-warning">Cancel Order</button>
                     {% elif orders.status.status == 'Approved'%}
 					<h6 style="display:inline-block;">Status: <span class="alert alert-success">Order Approved</span> </h6>
