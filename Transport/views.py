@@ -57,7 +57,7 @@ def RentCreate(request):
 		Autos = AutoMobile.objects.get(pk=detail) 
 		pickup=request.POST.get('pickup_date')
 		returns=request.POST.get('return_date')
-		date_format = "%Y-%m-%d %H:%M"
+		date_format = "%Y-%m-%d"
 		day1=datetime.strptime(str(pickup), date_format)
 		day2=datetime.strptime(str(returns), date_format)
 		delta=day2-day1

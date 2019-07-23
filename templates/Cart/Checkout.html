@@ -33,7 +33,9 @@
                    		<div class="col-md-6">
                         <div class="estimated">
                         <p style="font-family:'Heebo', sans-serif; font-size:15px; margin-left:20px; margin-top:10px; font-weight:bold; display:inline-block;">Estimated total</p>
-                         <h5  style="font-family:'Heebo', sans-serif; font-size:15px; display:inline-block; margin-top:10px; font-weight:bold;">&#8358;{{order.order_total}}</h5>
+                         <h5 style="font-family:'Heebo', sans-serif; font-size:15px; display:inline-block; margin-top:10px; font-weight:bold;">&#8358;<span class="total">{{order.order_total}}</span></h5>
+                         <input class="chek-email" type="hidden" value="{{request.user.email}}">
+                         <input class="chek-id" type="hidden" value="{{order.id}}">
                    </div>
                    		</div>
 
@@ -67,7 +69,7 @@
                                 </div>
                              </div>
                              <div  class="col-md-12 pads">
-                             <a class="flwpug_getpaid" 
+                             <!-- {% comment %} <a class="flwpug_getpaid" 
   data-PBFPubKey="FLWPUBK_TEST-893967261e333ea291432397b498669b-X" 
   data-txref="rave-123456" 
   data-amount="2000" 
@@ -75,8 +77,8 @@
   data-currency="NGN" 
   data-pay_button_text="Pay Now" 
   data-country="NG" 
-  data-redirect_url="https://your-website.com/urlredirect"></a>
-                                
+  data-redirect_url="https://your-website.com/urlredirect"></a> {% endcomment %} -->
+                              <div id="paystackEmbedContainer"></div>  
                               
                                
                               </div>
@@ -112,9 +114,9 @@
 {% endblock %}
 {% block scripts%}
 <script src="{% static 'js/jquery.js' %}"></script>
-<script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+<!-- <script type="text/javascript" src="https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script> -->
 <!--<script src="https://js.stripe.com/v3/"></script>-->
-{# <script src="https://js.paystack.co/v1/inline.js"></script> #}
+ <script src="https://js.paystack.co/v1/inline.js"></script> 
 
 <script>
     $("#pickup").change(function () {
@@ -132,47 +134,59 @@
       });
 
     });
-
-    // PaystackPop.setup({
-    //   key: 'pk_test_74ef25e576096b2407b74e201a49ffddb54c1344',
-    //   email:'adamstemii@gmail.com',
-    //   amount:10000,
-    //   container:'paystackEmbedContainer',
-    //   callback:function(response){
-    //     alert('succesful payment '+response.reference)
-    //   },
-    // });
-    const API_publicKey = "FLWPUBK_TEST-893967261e333ea291432397b498669b-X";
-
-    function payWithRave() {
-        var x = getpaidSetup({
-            PBFPubKey: API_publicKey,
-            customer_email: "user@example.com",
-            amount: 2000,
-            customer_phone: "234099940409",
-            currency: "NGN",
-            txref: "rave-123456",
-            meta: [{
-                metaname: "flightID",
-                metavalue: "AP1234"
-            }],
-            onclose: function() {},
-            callback: function(response) {
-                var txref = response.tx.txRef; // collect txRef returned and pass to a          server page to complete status check.
-                console.log("This is the response returned after a charge", response);
-                if (
-                    response.tx.chargeResponseCode == "00" ||
-                    response.tx.chargeResponseCode == "0"
-                ) {
-                    alert("success")
-                } else {
-                   alert("failed")
-                }
-
-                x.close(); // use this to close the modal immediately after payment.
+    let total= $('.total').text() *100
+    let email=$('.chek-email').attr('value')
+    let id=$('.chek-id').attr('value')
+    PaystackPop.setup({
+      key: 'pk_test_74ef25e576096b2407b74e201a49ffddb54c1344',
+      email:email,
+      amount:total,
+      container:'paystackEmbedContainer',
+      callback:function(response){
+        // alert('succesful payment '+response.reference)
+        $.ajax({
+            url:"update_order/",
+            data:{
+                'order_id':id,
+                // 'refrence':response.reference
+            },
+            success:function(data){
+                alert(data)
             }
         });
-    }
+      },
+    });
+    // const API_publicKey = "FLWPUBK_TEST-893967261e333ea291432397b498669b-X";
+
+    // function payWithRave() {
+    //     var x = getpaidSetup({
+    //         PBFPubKey: API_publicKey,
+    //         customer_email: "user@example.com",
+    //         amount: 2000,
+    //         customer_phone: "234099940409",
+    //         currency: "NGN",
+    //         txref: "rave-123456",
+    //         meta: [{
+    //             metaname: "flightID",
+    //             metavalue: "AP1234"
+    //         }],
+    //         onclose: function() {},
+    //         callback: function(response) {
+    //             var txref = response.tx.txRef; // collect txRef returned and pass to a          server page to complete status check.
+    //             console.log("This is the response returned after a charge", response);
+    //             if (
+    //                 response.tx.chargeResponseCode == "00" ||
+    //                 response.tx.chargeResponseCode == "0"
+    //             ) {
+    //                 alert("success")
+    //             } else {
+    //                alert("failed")
+    //             }
+
+    //             x.close(); // use this to close the modal immediately after payment.
+    //         }
+    //     });
+    // }
 
 
 </script>

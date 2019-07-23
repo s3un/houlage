@@ -47,8 +47,8 @@
 					<a href=" {% url 'remove_rent' rpk=mobile.pk %}">remove?</a>
 				</small></td>
 				<td>&#8358;{{mobile.Automobile.Cost}}/day</td>
-				<td>{{mobile.pickup_date.date}}</td>
-				<td>{{mobile.return_date.date}}</td>
+				<td>{{mobile.pickup_date}}</td>
+				<td>{{mobile.return_date}}</td>
 				<td>&#8358;{{mobile.Cost}}/{{mobile.days}} days</td>
 			</tr>
 			{% endfor%}

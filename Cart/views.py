@@ -1,6 +1,7 @@
 from datetime import datetime
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from .models import cart
+from Orders.models import order,Status
 from Transport.forms import DateForm
 from Transport.models import AutoMobile,Rent,Locations
 from Orders.models import order
@@ -98,3 +99,11 @@ def CheckoutView(request):
 	return redirect('cart_home')
 
 
+def UpdateOrder(request):
+	order_id=request.GET.get("order_id")
+	Order= order.objects.get(id=order_id)
+	status=Status.objects.get(id=2)
+
+	Order.status=status
+	Order.save()
+	return HttpResponse("Booking Secured!")
