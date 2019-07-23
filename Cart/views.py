@@ -6,8 +6,9 @@ from Transport.models import AutoMobile,Rent,Locations
 from Orders.models import order
 from django.db.models import Avg, Max, Min, Sum, Count
 from django.conf import settings
-import stripe
-stripe.api_key=settings.STRIPE_SECRET_KEY
+# import stripe
+#
+# stripe.api_key=settings.STRIPE_SECRET_KEY
 # Create your views here.
 
 

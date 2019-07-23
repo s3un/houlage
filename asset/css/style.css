@@ -153,7 +153,7 @@ padding: 8px;
 /* footer */
 
 .panel-footer   {
-    background-color: #3da2de;
+    background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
     margin-bottom: 30px;
 }
 
@@ -1085,7 +1085,7 @@ nav ul  {
 }
 
 nav.black   {
-    background:  #3da2de;
+    background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
 }
 
 nav ul li   {
@@ -1215,6 +1215,7 @@ nav ul li a:hover {
   .adheader {
       font-size: 55px;
       padding-top: 30px;
+      background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
   }
   .adlink{
      margin-top: 70px;
@@ -1308,4 +1309,57 @@ nav ul li a:hover {
 .sentence{
     text-transform: capitalize;
 }
+
+
+
 /* allusers end */
+
+/*new footer*/
+.panel-foot	{
+	background-color:  #3DA2DE;
+}
+
+.foottitle	{
+	font-size: 40px;
+	margin-top: 50px;
+    font-family:'Heebo', sans-serif;
+    color: #ffffff;
+}
+
+.foottitle2	{
+	font-size: 20px;
+	margin-top: 70px;
+    font-family:'Heebo', sans-serif;
+    color: #ffffff;
+}
+
+.inputfoot	{
+	width: 80%;
+	height:40px;
+	margin-left: 40px;
+	margin-top: 20px;
+}
+
+.footcol1	{
+	border-right: 1px solid red;
+}
+
+.lastpanel	{
+	background-color: rgb(231, 67, 67);
+}
+
+.last1	{
+	margin: 20px;
+	border-right: 1px solid #ffffff;
+	color: #ffffff;
+}
+
+.last1	a {
+	color: #ffffff;
+}
+
+.last2	{
+	margin: 10px;
+}
+
+
