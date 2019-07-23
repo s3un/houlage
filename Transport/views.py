@@ -3,7 +3,7 @@ from django.shortcuts import render, HttpResponse,redirect
 from .models import AutoMobile,Vehicle,Brand,Booking,Rent,Locations
 from Cart.models import cart
 from Orders.models import order,Status
-from .forms import DateForm
+from .forms import DateForm, CarForm
 # Create your views here.
 def AutomobileView(request):
 	template='Transport/automobile.html'
@@ -101,9 +101,9 @@ def PickUp (request):
 	pickup = request.GET.get('pickup')
 	cost=0
 	if pickup =="pick":
-		cost=0;
+		cost=0
 	elif pickup =="deliver":
-		cost=200;
+		cost=200
 	print (cost)
 	locations = Locations.objects.all()
 	context = {
@@ -148,4 +148,89 @@ def Cancel_Order(request):
 
 def Edit_cars(request):
 	template="Admin/editcars.html"
-	return render(request,template)
+	if request.method=='GET':
+		cars=AutoMobile.objects.all()
+		form = CarForm()
+		context={
+			'cars':cars,
+			'form':form
+		}
+
+		return render(request,template,context)
+	elif request.method=='POST':
+		vehicle_id= request.POST.get("Vehicle_id")
+		brand_id= request.POST.get("Brands")
+		model= request.POST.get("Model")
+		color= request.POST.get("Color")
+		seat=request.POST.get("No_of_Seat")
+		Image=request.FILES.get("image")
+		Air_Condition=request.POST.get("Air_Condition")
+		Availability=request.POST.get("Availability")
+		Cost=request.POST.get("Cost")
+
+		vehicle= Vehicle.objects.get(id=vehicle_id)
+		brands=Brand.objects.get(id=brand_id)
+		if Air_Condition or Availability =="on":
+			Air_Condition=True
+			Availability=True
+		elif Air_Condition or Availability !="on":
+			Air_Condition=False
+			Availability=False
+		car_create = AutoMobile.objects.create(
+			Vehicle_id=vehicle,
+			Brands=brands,
+			Model=model,
+			Color=color,
+			No_of_Seat=seat,
+			image=Image,
+			Air_Condition=Air_Condition,
+			Availability=Availability,
+			Cost=Cost
+		)
+		car_create.save()
+		return redirect('edit_cars')
+
+def Load_cars(request):
+	template="Admin/Load-cars.html"
+	car_id = request.GET.get('val')
+
+	car= AutoMobile.objects.get(id=car_id)
+	form=CarForm()
+	context = {
+		'car':car,
+		'form':form
+	}
+	return render(request,template,context)
+	if request.method=='POST':
+		vehicle_id= request.POST.get("Vehicle_id")
+		brand_id= request.POST.get("Brands")
+		model= request.POST.get("Model")
+		color= request.POST.get("Color")
+		seat=request.POST.get("No_of_Seat")
+		Image=request.FILES.get("image")
+		Air_Condition=request.POST.get("Air_Condition")
+		Availability=request.POST.get("Availability")
+		Cost=request.POST.get("Cost")
+
+		vehicle= Vehicle.objects.get(id=vehicle_id)
+		brands=Brand.objects.get(id=brand_id)
+		if Air_Condition or Availability =="on":
+			Air_Condition=True
+			Availability=True
+		elif Air_Condition or Availability !="on":
+			Air_Condition=False
+			Availability=False
+		
+		car.Vehicle_id=vehicle,
+		car.Brands=brands,
+		car.Model=model,
+		car.Color=color,
+		car.No_of_Seat=seat,
+		car.image=Image,
+		car.Air_Condition=Air_Condition,
+		car.Availability=Availability,
+		car.Cost=Cost
+		car.save()
+		return redirect('edit_cars')	
+
+	

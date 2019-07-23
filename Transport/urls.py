@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^order-approve/$', views.Approve_Order, name='approve_order'),
     url(r'^order-cancel/$', views.Cancel_Order, name='cancel_order'),
     url(r'^edit-cars/$', views.Edit_cars, name='edit_cars'),
+	url(r'^load-cars/$', views.Load_cars, name='load_car'),
 
 ]
 urlpatterns+=staticfiles_urlpatterns()

@@ -1,22 +1,27 @@
 {% extends 'Home/signbase.html'%}
-
+{% load crispy_forms_tags %}
 {% block content%}
 <body>
-<div class="container">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row adheader">
         <div class="col-md-12">
             <div class="col-md-4">
                         
             </div>
                         
             <div class="col-md-4">
-                <center><div class="adheader"><p>SOAR ADMIN</p></div></center>
-                <center><p>CARS AVAILABLE</p></center>
+                <center><div class=""><p>SOAR ADMIN</p></div></center>
+                <center><h3>CARS AVAILABLE</h3></center>
             </div>
                         
-            <div class="col-md-4">
-                        
-            </div>                
+           <div class="col-md-4 ">
+            	<div class="adlink">
+            	<p class="text-danger">Welcome</p>
+            	<p class="text-danger">{{request.user.username}} </p>/
+            	<a class="text-light"href="{% url 'index' %}">Home</a>/
+            	<a class="text-light"href="{% url 'logout' %}">Logout</a>
+            	</div>
+            </div>               
         </div>
     </div>
 </div>
@@ -24,23 +29,67 @@
 <div class="container-fluid justa">
     <div class="row">
         <div class="col-md-8">
-            <div class="col-md-4">
+            {% for car in cars%}
+            <div class="col-md-6">
                 <div class="cf">
-                    <img class="bottom" src="img/benzolin.jpg" />
-                    <img class="top" src="img/suvback.jpg" />
+                    <img class="bottom" src="{{car.image.url}}" />
+                    {% comment %} <img class="top" src="img/suvback.jpg" /> {% endcomment %}
                 </div>
                 <div class="carname">
-                    <p>Benz C-class 2010/2019</p>
+                    <p>{{car.Brands}} {{car.Model}}</p>
                 </div>
                 <div class="carname">
-                    <p>#20,000</p>
+                    <p>{{car.Cost}}</p>
                 </div>
-                <center><button type="button" class="btn carbutton btn-danger" data-toggle="modal" data-target="#exampleModalLong">Edit</button></center>
-                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <center><button type="button" value="{{car.id}}" data-url="{% url 'load_car' %}" class="btn carbutton btn-danger" data-toggle="modal" data-target="#exampleModalLong">Edit</button></center>
+                
+            </div>
+            {% endfor%}
+        </div>
+        <div class="col-md-4">
+        <div class="container justa">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4 circle" style="padding:10px;">
+                <div class="center">
+                    <h3>Add Car</h3> 
+                </div>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- <div class="form-group">
+                        <input type="text" style="margin-top: 30px;" class="form-control" placeholder="Vehicle name" >
+
+                        <input type="text" style="margin-top: 30px;" class="form-control" placeholder="Vehicle model" >
+                        <input type="text" style="margin-top:30px;" class="form-control" placeholder="Year" >
+
+
+                        <label style="padding-top: 30px;">Vehicle Type</label>
+                        <select class="form-control" placeholder="brand">
+                                <option></option>
+                                <option>Car</option>
+                                <option>Trucks</option>
+                                <option>Tanker</option>
+                               
+                        </select>
+
+                        <input type="text" style="margin-top:30px;" class="form-control" placeholder="#Price" >
+                    </div> -->
+                    {{form|crispy}}
+                 <center><button type="submit"  class="btn btn-danger carbutton" >Submit</button></center>   
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                         <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="all-content modal-content">
                             <div class="modal-header">
-                            <p class="modal-title" id="exampleModalLongTitle">Benz C-class 2010/2019</p>
+                            <p class="modal-title" id="exampleModalLongTitle">{{car.Brands}} {{car.Model}}</p>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -70,109 +119,28 @@
                         </div>
                         </div>
                 </div>
-            </div>
-
-            <div class="col-md-4">
-                    <div class="cf">
-                        <img class="bottom" src="img/toyota.jpg" />
-                        <img class="top" src="img/toyotaback.jpg" />
-                    </div>
-                    <div class="carname">
-                        <p>Benz C-class 2010/2019</p>
-                    </div>
-                    <div class="carname">
-                        <p>#20,000</p>
-                    </div>
-    
-                    <center><button type="button" class="btn carbutton btn-danger" data-toggle="modal" data-target="#exampleModalLong">Edit</button></center>
-                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <p class="modal-title" id="exampleModalLongTitle">Benz C-class 2010/2019</p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group adminform">
-                                                <center><label>Quantity</label></center>
-                                                <select class="form-control">
-                                                    <option></option>
-                                                    <option>Available</option>
-                                                    <option>Non</option>
-                                                   
-                                                </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <center><label>Price</label></center>
-                                            <input class="form-control" type="text" placeholder="#20,000">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-                                </div>
-                            </div>
-                            </div>
-                    </div>
-            </div>
-
-            <div class="col-md-4">
-                    <div class="cf">
-                        <img class="bottom" src="img/whitpickup.jpg" />
-                        <img class="top" src="img/pickupback.jpg" />
-                    </div>
-                    <div class="carname">
-                        <p>Benz C-class 2010/2019</p>
-                    </div>
-                    <div class="carname">
-                        <p>#20,000</p>
-                    </div>
-    
-                    <center><button type="button" class="btn carbutton btn-danger" data-toggle="modal" data-target="#exampleModalLong">Edit</button></center>
-                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <p class="modal-title" id="exampleModalLongTitle">Benz C-class 2010/2019</p>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form>
-                                        <div class="form-group adminform">
-                                                <center><label>Quantity</label></center>
-                                                <select class="form-control">
-                                                    <option></option>
-                                                    <option>Available</option>
-                                                    <option>Non</option>
-                                                   
-                                                </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <center><label>Price</label></center>
-                                            <input class="form-control" type="text" placeholder="#20,000">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Remove</button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
-                                </div>
-                            </div>
-                            </div>
-                    </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 </body>
+{% endblock%}
+
+{% block scripts%}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.carbutton').unbind().click(function(e){
+            const val = e.target.value
+            const url = $('.carbutton').attr('data-url')
+            console.log(val, url)
+            
+            $.ajax({
+                url:url,
+                data:{
+                    "val":val
+                },
+                success:function(data){
+                    $("#exampleModalLong").modal();
+                    $(".all-content").html(data)
+                },
+            });
+        });
+    });
+</script>
 {% endblock%}
