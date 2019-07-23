@@ -25,7 +25,7 @@ def Auto_details(request,pk):
 	else:
 		RentInfo= Rent.objects.filter(Automobile__pk=details.pk, Cart__id=cart_id)
 
-	dateForm=DateForm()
+	dateForm=DateForm(None)
 	context={
 	'details':details,
 	'carts':carts,

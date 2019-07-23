@@ -119,23 +119,22 @@
 <script type="text/javascript">
     $(function() {
         $("#id_pickup_date").datetimepicker({
-            format:'Y-m-d H:i',
+            format:'Y-m-d',
             minDate:'0',
             maxDate:'+1970/01/07',
-            minTime:0,
+            timepicker:false,
 
         });
         $("#id_return_date").datetimepicker({
-            format:'Y-m-d H:i',
+            format:'Y-m-d',
             onShow:function( ct ){
             this.setOptions({
             minDate:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
-            minTime:jQuery('#id_pickup_date').val()?jQuery('#id_pickup_date').val():false,
             })
             },
             maxDate:'+1970/01/07',
 
-            maxTime:'21:00',
+            timepicker:false,
         });
     });
 </script>
