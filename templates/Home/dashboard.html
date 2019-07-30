@@ -430,7 +430,7 @@
 <div class=" hidden-md hidden-lg">
 <div class="container-fluid">
     <div id="mySidenav" class="sidenav">
-      <div class="">
+      <div class="" style="padding-top:50px;" >
         <div class="profilename">
             <p>{{user.last_name}} {{user.first_name}}</p>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -471,8 +471,8 @@
         </div>
     </div>
 </div>
-<div class="tab-content center" onclick="closeNav()">
-    <div id="profile-tab-mo" class="tab-pane fade ">
+<div class="tab-content center" style="padding-top:70px" onclick="closeNav()">
+    <div id="profile-tab-mo" style="padding-top:20px;" class="tab-pane fade ">
         <div class="col-md-12">
             <div class="profile2">
                 <div class="newprofile1">
@@ -507,17 +507,17 @@
               </div>
                 <form id="basic-info2" class="form-horizontal" method="post" action="{% url 'basic_update' %}">
                   {% csrf_token%}
-                <div class="form-group">
+                <div class="form-group col-md-12">
                   <label>Firstname</label>
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="firstname" type="text" value="{{user.first_name}}" />
+                    <input style=" " class="form-control" name="firstname" type="text" value="{{user.first_name}}" />
                   </div>
-                  <div class="form-group">
+                  <div class="form-group col-md-12">
                     <label>Lastname</label>
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" name="lastname" value="{{user.last_name}}" />
+                    <input style="" class="form-control" type="text" name="lastname" value="{{user.last_name}}" />
                   </div>
                     
                 
-                  <center><button type="submit" style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+                  <center><button type="submit" style="width:90%; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
                 </form>
             </div>
 
@@ -527,18 +527,18 @@
                 </div>
                 <form id="contact-info2" class="form-horizontal" method="post" action="{% url 'contact_update' %}" >
                   {%csrf_token%}
-                <div class="form-group">
+                <div class="form-group col-md-12">
                   <label>Address</label>
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="address" type="text" value="{{user.address}}" />
+                    <input  class="form-control" name="address" type="text" value="{{user.address}}" />
                     <label>Phone Number</label>
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="phone" type="text" value="{{user.phone}}" />
+                    <input  class="form-control" name="phone" type="text" value="{{user.phone}}" />
                     
                 </div>
-                  <center><button style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" type="submit" class="btn btn-danger">Save Changes</button></center>
+                  <center><button style="width:90%; height: 40px; margin-top: 30px; margin-bottom: 40px;" type="submit" class="btn btn-danger">Save Changes</button></center>
                 </form>
             </div>
 
-      <div class="col-md-11 profile1">
+      <!--<div class="col-md-11 profile1">
           <div class="newdash">
               <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-key"></i>Change Password</p>
           </div>
@@ -548,9 +548,10 @@
                       <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="New Passowrd" />
                       <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="Password" placeholder="Confirm Password" />
                   </div>
+               <center><button style="width:400px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>   
               </form>
-      </div>
-      <center><button style="width:400px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+      </div>-->
+      
   </div>    
     <div id="dashboard-tab-mo"  class="tab-pane fade in active">
         <div class="container firstdash">

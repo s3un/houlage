@@ -1162,7 +1162,7 @@ nav ul li a:hover {
   }
   .sidenav .closebtn {
   position: absolute;
-  top: 0;
+  top: 70px;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
