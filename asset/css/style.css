@@ -6,7 +6,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
      font-family: 'Oswald', sans-serif;
 }
 .bodytype   {
-    height: 700px;
+    height: 100vh;
     background-image: url("/static/img/carscity.jpg");
     width: 100%;
     max-width: 100%;
@@ -60,7 +60,7 @@ padding: 8px;
 
 .text  p, .logtext  {
     margin-top: 100px;
-    margin-bottom: 80px;
+    margin-bottom: 10%;
     font-family: 'Oswald', sans-serif;
     color: #ffffff;
     font-size: 50px;
@@ -90,6 +90,7 @@ padding: 8px;
 /*button on home */
 .butall {
     margin-left: 100px;
+    margin-bottom: 5%;
 }
 
 .button {
@@ -107,6 +108,7 @@ padding: 8px;
     opacity: 1;
     background-color: #ff090e;
     border: 1px solid rgba(219, 221, 255, 0.6);
+    
 
 
 }
@@ -274,9 +276,6 @@ padding: 8px;
 }
 
 .scroll-down {
-    position: absolute;
-    top: 500px;
-    left: 50%;
     margin-left: -16px;
     display: block;
     width: 32px;
