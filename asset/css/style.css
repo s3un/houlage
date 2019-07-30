@@ -478,10 +478,10 @@ padding: 8px;
 
 .profilebox img {
     max-height: 170px;
-    max-width: 200px;
+    /*max-width: 200px;*/
     height: 180px;
-    width: 200px;
-    border: 1px solid goldenrod;
+    /*width: 200px;*/
+    border: 1px solid #fff;
     border-radius: 500px;
 }
 
@@ -1125,21 +1125,79 @@ nav ul li a:hover {
 /* new dash */
 
 .tab {
-    float: left;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
-    width: 15%;
     height: 100%; 
     background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
     position: fixed;
   }
+
+.sidenav {
+    border: 1px solid #ccc;
+    background-color: #000;
+    height: 100%; 
+    display: none;
+    background-image: linear-gradient(to right top, #ff0505, #ff2c96, #d182ef, #84b3ff, #3da2de);
+    position: fixed;
+     z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+    .sidenav button {
+    display: block;
+    background-color: transparent;
+    color: rgb(252, 252, 252);
+    padding: 5px 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  .sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+  .sidenav button:hover {
+    background-color: rgb(29, 28, 28);
+    opacity: 0.1;
+   
+  }
   
+  /* Create an active/current "tab button" class */
+  .sidenav a.active {
+    background-color: rgb(29, 28, 28);
+    opacity: 0.1;
+  
+  }
+  .tabs-cont{
+
+  }
+
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background: transparent;
+    border: none;
+}
+.nav-tabs >li > a:hover{
+    background: transparent;
+    border: none;
+}
 
   .tab button {
     display: block;
     background-color: transparent;
     color: rgb(252, 252, 252);
-    padding: 22px 16px;
+    padding: 5px 16px;
     width: 100%;
     border: none;
     outline: none;
@@ -1156,7 +1214,7 @@ nav ul li a:hover {
   }
   
   /* Create an active/current "tab button" class */
-  .tab button.active {
+  .tab a.active {
     background-color: rgb(29, 28, 28);
     opacity: 0.1;
   
@@ -1167,7 +1225,7 @@ nav ul li a:hover {
     float: right;
     padding: 0px 12px;
     /* border: 1px solid #ccc; */
-    width: 85%;
+   /* width: 85%;*/
     border-left: none;
     height: 100%;
    
@@ -1177,7 +1235,7 @@ nav ul li a:hover {
 
   .profile1 {
      position: center;
-      background-color: #fafafa;
+      /*background-color: #fafafa;*/
       margin-top: 30px;
   }
 
@@ -1217,8 +1275,19 @@ nav ul li a:hover {
       padding-top: 30px;
       background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
   }
+    .adheaders {
+      font-size: 25px;
+      padding-top: 15px;
+      background-image: linear-gradient(to right top, #3da2de, #7a87e4, #c25ac0, #e80a73, #da0909);
+
+  }
   .adlink{
      margin-top: 70px;
+     text-indent: 2px;
+     font-size: 18px;
+  }
+    .adlinks{
+     /*margin-top: 20px;*/
      text-indent: 2px;
      font-size: 18px;
   }

@@ -165,3 +165,27 @@ def Transactions(request):
 	'rent':rent,
 	}
 	return render(request, template, context)
+
+def BasicUpdate(request):
+	if request.method=="POST":
+		firstname=request.POST.get("firstname")
+		lastname=request.POST.get("lastname")
+
+		user=request.user
+
+		user.first_name=firstname
+		user.last_name=lastname
+		user.save()
+		return HttpResponse("Basic Details Successfully updated")
+
+def ContactUpdate(request):
+	if request.method=="POST":
+		address=request.POST.get("address")
+		phone=request.POST.get("phone")
+
+		user=request.user
+
+		user.address=address
+		user.phone=phone
+		user.save()
+		return HttpResponse("Contact Details Successfully updated")
