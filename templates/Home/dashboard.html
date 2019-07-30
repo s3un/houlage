@@ -3,20 +3,7 @@
 {% block scripts%}
 <script src="{% static 'js/jquery.js' %}"></script>
 <script type="text/javascript">
-//     function openCity(evt, cityName) {
-//   var i, tabcontent, tablinks;
-//   tabcontent = document.getElementsByClassName("tabcontent");
-//   for (i = 0; i < tabcontent.length; i++) {
-//     tabcontent[i].style.display = "none";
-//   }
-//   tablinks = document.getElementsByClassName("tablinks");
-//   for (i = 0; i < tablinks.length; i++) {
-//     tablinks[i].className = tablinks[i].className.replace("active", "");
-//   }
-//   document.getElementById(cityName).style.display = "block";
-//   evt.currentTarget.className += " active";
-// }
-    $("#id_vehicl").change(function () {
+    $("#id_vehicl").unbind().change(function () {
       var url = $("#vehicleForm").attr("data-veh-url");  // get the url of the `load_cities` view
       var Vehicle_tag = $(this).val();  // get the selected country ID from the HTML input
       $.ajax({                       // initialize an AJAX request
@@ -26,6 +13,20 @@
         },
         success: function (data) {   // `data` is the return of the `load_cities` view function
           $("#id_brand").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+    $("#id_vehic2").unbind().change(function () {
+      var url = $("#vehicleForm2").attr("data-veh-url");  // get the url of the `load_cities` view
+      var Vehicle_tag = $(this).val();  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'Vehicle': Vehicle_tag       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_brand2").html(data);  // replace the contents of the city input with the data that came from the server
         }
       });
 
@@ -48,7 +49,23 @@
       
 
     });
+    $("#id_brand2").change(function () {
+      var url = $("#BrandForm2").attr("data-model-url");  // get the url of the `load_cities` view
+      var brand_tag = $(this).val();
+      var vehicle= $(".brand_c").attr("data-vehicle");  // get the selected country ID from the HTML input
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'brand_tag': brand_tag,
+          'vehicle':vehicle,       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_model2").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+      
 
+    });
     var frm=$("#carform");
     frm.submit(function(){
       $.ajax({
@@ -63,6 +80,79 @@
       });
       return false;
     });
+    var frm2=$("#carform2");
+    frm2.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          $('.complete2').html(data)
+
+        }
+      });
+      return false;
+    });
+    var basic=$("#basic-info");
+    basic.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          alert(data)
+
+        }
+      });
+      return false;
+    });
+    var contact=$("#contact-info");
+    contact.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          alert(data)
+
+        }
+      });
+
+      return false;
+    });
+    var basic2=$("#basic-info2");
+    basic2.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          alert(data)
+
+        }
+      });
+      return false;
+    });
+    var contact2=$("#contact-info2");
+    contact2.submit(function(){
+      $.ajax({
+        data:$(this).serialize(),
+        type:$(this).attr('method'),
+        url: $(this).attr('action'),
+        success: function(data){
+          // $('.complete_box').show()
+          alert(data)
+
+        }
+      });
+
+      return false;
+    });
+
   let openav = ()=>{
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("mySidenav").style.display = "block";
@@ -93,7 +183,6 @@
 
 
     <div class="col-md-10 tab-content col-md-push-2" style="overflow-x:hidden;">
-    
         <div id="dashboard-tab" class="tab-pane fade in active col-md-12">
           <div class="container firstdash">
               <div class="row">
@@ -281,12 +370,19 @@
               <div class="newdash">
                   <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
               </div>
-                <form>
+                <form id="basic-info" class="form-horizontal" method="post" action="{% url 'basic_update' %}">
+                  {% csrf_token%}
                 <div class="form-group">
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="First Name" />
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="Last Name" />
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="" />
-                </div>
+                  <label>Firstname</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="firstname" type="text" value="{{user.first_name}}" />
+                  </div>
+                  <div class="form-group">
+                    <label>Lastname</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" name="lastname" value="{{user.last_name}}" />
+                  </div>
+                    
+                
+                  <center><button type="submit" style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
                 </form>
             </div>
 
@@ -294,12 +390,16 @@
                 <div class="newdash">
                     <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-exchange"></i>Contact</p>
                 </div>
-                <form>
+                <form id="contact-info" class="form-horizontal" method="post" action="{% url 'contact_update' %}" >
+                  {%csrf_token%}
                 <div class="form-group">
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="Address" />
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="Phone" />
-                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" placeholder="Email" />
+                  <label>Address</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="address" type="text" value="{{user.address}}" />
+                    <label>Phone Number</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="phone" type="text" value="{{user.phone}}" />
+                    
                 </div>
+                  <center><button style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" type="submit" class="btn btn-danger">Save Changes</button></center>
                 </form>
             </div>
 
@@ -313,10 +413,11 @@
                             <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="Password" placeholder="New Passowrd" />
                             <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="Password" placeholder="Confirm Password" />
                         </div>
+                        <center><button style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>  
                     </form>
             </div>
 
-        <center><button style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+      
 
         </div> 
 
@@ -349,7 +450,7 @@
     </div>
 
 
-    <div class="row adheaders">
+    <div class="row adheaders navbar-fixed-top">
         <div class="col-sm-12 ">
             <div class="col-sm-6 col-xs-1">
             <a href="javascript:void(0)" class="closebtn" onclick="openav()">
@@ -375,7 +476,7 @@
         <div class="col-md-12">
             <div class="profile2">
                 <div class="newprofile1">
-                    <img src="img/benzolin.jpg" >
+                    <img src="{{user.picture.url}}" >
                 </div>
 
                 <div class="newbody">
@@ -383,23 +484,74 @@
                         <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px; margin-top: 40px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
                     </div>
 
-                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >FIRST-NAME: OLUWASEUN</p>
-                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >LAST-NAME: OYEBOWALE</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >FIRST-NAME: {{user.first_name}}</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >LAST-NAME: {{user.last_name}}</p>
                 </div>
 
                 <div class="newbody">
                     <div class="newdash">
                         <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px; margin-top: 40px;"><i style="padding-right:10px;"class="la la-exchange"></i>Contact</p>
                     </div>
-                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block;" >ADDRESS: 54, PRINCE FADINA STREET, OTA OGUN STATE.</p>
-                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >MOBILE: 09037261648</p>
-                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >EMAIL: getalife@gmail.com</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block;" >ADDRESS: {{user.address}} </p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >MOBILE: {{user.phone}}</p>
+                    <p style="font-family: 'Heebo', sans-serif; padding-left: 20px; margin-top: 20px; display:block; " >EMAIL: {{user.email}}</p>
                 </div>
             </div>
 
         </div>
     </div>
-    
+  <div id="setting-tab-mo" class="tab-pane fade">
+            <div class="col-md-11 profile1">
+              <div class="newdash">
+                  <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
+              </div>
+                <form id="basic-info2" class="form-horizontal" method="post" action="{% url 'basic_update' %}">
+                  {% csrf_token%}
+                <div class="form-group">
+                  <label>Firstname</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="firstname" type="text" value="{{user.first_name}}" />
+                  </div>
+                  <div class="form-group">
+                    <label>Lastname</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" type="text" name="lastname" value="{{user.last_name}}" />
+                  </div>
+                    
+                
+                  <center><button type="submit" style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+                </form>
+            </div>
+
+            <div class="col-md-11 profile1">
+                <div class="newdash">
+                    <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-exchange"></i>Contact</p>
+                </div>
+                <form id="contact-info2" class="form-horizontal" method="post" action="{% url 'contact_update' %}" >
+                  {%csrf_token%}
+                <div class="form-group">
+                  <label>Address</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="address" type="text" value="{{user.address}}" />
+                    <label>Phone Number</label>
+                    <input style="margin-top:30px; width:900px; margin-left:30px; " class="form-control" name="phone" type="text" value="{{user.phone}}" />
+                    
+                </div>
+                  <center><button style="width:500px; height: 40px; margin-top: 30px; margin-bottom: 40px;" type="submit" class="btn btn-danger">Save Changes</button></center>
+                </form>
+            </div>
+
+      <div class="col-md-11 profile1">
+          <div class="newdash">
+              <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-key"></i>Change Password</p>
+          </div>
+              <form>
+                  <div class="form-group">
+                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="Current Passowrd" />
+                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="New Passowrd" />
+                      <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="Password" placeholder="Confirm Password" />
+                  </div>
+              </form>
+      </div>
+      <center><button style="width:400px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
+  </div>    
     <div id="dashboard-tab-mo"  class="tab-pane fade in active">
         <div class="container firstdash">
             <div class="row">
@@ -412,21 +564,8 @@
                         </div>
         
                         <div class="dashcontent">
-                            <h1 style=" color: #ffffff;">12</h1>
+                            <h1 style=" color: #ffffff;">{{rent_count}}</h1>
                         </div>
-                        </div>
-                    </div>
-        
-                    <div class="col-md-3 col-xs-6 ">
-                        <div class="dashimage3 quickhire ">
-                                 <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ban-circle"></span>
-                            <div class="dashtext">
-                                <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Issues</h3>
-                            </div>
-        
-                            <div class="dashcontent">
-                                <h1 style=" color: #ffffff;">400</h1>
-                            </div>
                         </div>
                     </div>
         
@@ -438,7 +577,7 @@
                             </div>
         
                             <div class="dashcontent">
-                                <h1 style=" color: #ffffff;">400</h1>
+                                <h1 style=" color: #ffffff;">{{rent_count}}</h1>
                             </div>
                         </div>
                     </div>
@@ -447,11 +586,11 @@
                         <div class="dashimage2 quickhire">
                                  <span style=" color: #ffffff;" class="glyphicon glyphsethings glyphicon-ok-circle"></span>
                         <div class="dashtext">
-                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Car Hired</h3>
+                            <h3 style="font-family:'Heebo', sans-serif; padding-top: 10px">Orders</h3>
                         </div>
         
                         <div class="dashcontent">
-                            <h1 style=" color: #ffffff;">12</h1>
+                            <h1 style=" color: #ffffff;">{{orders}}</h1>
                         </div>
                         </div>
                     </div>
@@ -460,50 +599,53 @@
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="col-md-9">
-                <center><p class="quicksearch">QUICK SEARCH</p></center> 
-              <form>
-                  <div class="form-group dashform">
-                        <center><label class="dashlabel">Vehicle</label></center> 
-                      <select style="border-radius: 350px;" class="form-control">
-                           <option></option>
-                          <option>Trucks</option>
-                          <option>Pick up Van</option>
-                          <option>Tankers</option>
-                          <option>cars</option>
-                      </select>
-                  </div>
-
-                   <div class="form-group dashform1">
-                        <center><label>Brand</label></center>
-                      <select class="form-control" style="border-radius: 350px;">
-                           <option></option>
-                          <option>Trucks</option>
-                          <option>Pick up Van</option>
-                          <option>Tankers</option>
-                      </select>
-                  </div>
-
-                   <div class="form-group dashform1">
-                        <center><label>Model</label></center>
-                      <select class="form-control" style="border-radius: 350px;">
-                           <option></option>
-                          <option>Trucks</option>
-                          <option>Pick up Van</option>
-                          <option>Tankers</option>
-                      </select>
-                  </div>
-                  <button type="submit" style="border-radius: 350px;" class="btn btn-danger">View</button>
-              </form>
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="col-md-9">
+                          <center><p class="quicksearch">QUICK SEARCH</p></center> 
+                        <form action="{% url 'load_auto' %}" id="carform2" method="post" enctype="multipart/form-data" novalidate>
+                                        {% csrf_token%}
+            
+            <div id="vehicleForm2" class="form-group dashform" data-veh-url="{% url 'load_brand'%}">
+            <label>Vehicle Type</label>
+            <select class="form-control" id="id_vehic2" name="vehicle" required>
+                <option>----------</option>
+                {% for veh in vehic%}
+                <option value="{{veh.tag}}">{{veh.tag}}</option>
+                {% endfor %}
+            </select>
             </div>
-
-            <div class="col-md-3 circle">
-                
+          
+            <div id="BrandForm2" class="form-group dashform1" data-model-url="{% url 'load_model' %}">
+                <label>Brand</label>
+                <div>   
+                    <select class="form-control" id="id_brand2" name="Brand" required>
+                        
+                    </select>
+                </div>
             </div>
-        </div>
-    </div>
+          
+
+            <div class="form-group dashform1">
+            <label>Model</label>
+            <select class="form-control" id="id_model2" name="Model">
+                <option></option>
+            </select>
+            </div>
+                            <button type="submit" style="border-radius: 100px;" class="btn btn-danger">View</button>
+                        </form>
+                      </div>
+          
+                      <div class="col-md-3">
+                          
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="complete2">
+    
+                  </div>
+              </div>
 </div>
 
 <div class="container-fluid seconddash">
@@ -515,18 +657,13 @@
                         <li style="margin-left:10px;" class="la la-reply"></li><h4>Previous Transactions</h4>
                         </div>
     
-                    <div class="dash-cont">
-                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
-                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
-                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
-                    </div>
-    
-                    <div class="dash-cont">
-                        <h5 style="margin-left:10px;">Car- Toyota - Camry2008 - Black. </h5>
-                        <h5 style="margin-left:10px;">Hired On: 20 January 2019 <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
-                        <h5 style="margin-left:10px;">Returned On: failed to return on contract<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
-                    </div>
-                   </div> 
+                   {% for ren in rent%}
+                          <div class="dash-cont">
+                              <h5 style="margin-left:10px;">{{ren.Automobile.Brands}} {{ren.Automobile.Model}} </h5>
+                              <h5 style="margin-left:10px;">Hired On: {{ren.pickup_date.date}} <span class="glyphicon glyphok glyphicon-arrow-left"></span></h5>
+                              <h5 style="margin-left:10px;">Returned On: {{ren.return_date.date}}<span class="glyphicon glyphfail glyphicon-arrow-right"></span></h5>
+                          </div>
+                  {% endfor%}
                 </div>
     
                 <div class="col-md-3 ">
@@ -593,47 +730,7 @@
     </div>
   </div>
 
-  <div id="setting-tab-mo" class="tab-pane fade">
-    <div class="col-md-11 profile1">
-        <div class="newdash">
-            <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;"class="la la-user"></i>Basic Info</p>
-        </div>
-          <form>
-          <div class="form-group">
-              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="First Name" />
-              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Last Name" />
-              <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="text" placeholder="" />
-          </div>
-          </form>
-      </div>
 
-      <div class="col-md-11 profile1">
-          <div class="newdash">
-              <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-exchange"></i>Contact</p>
-          </div>
-          <form>
-          <div class="form-group">
-              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Address" />
-              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Phone" />
-              <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="text" placeholder="Email" />
-          </div>
-          </form>
-      </div>
-
-      <div class="col-md-11 profile1">
-          <div class="newdash">
-              <p style="font-family:'Heebo', sans-serif; padding-top:10px; padding-Left:20px;"><i style="padding-right:10px;" class="la la-key"></i>Change Password</p>
-          </div>
-              <form>
-                  <div class="form-group">
-                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="Current Passowrd" />
-                      <input style="margin-top:30px; width:390px; margin-left:30px; " class="form-control" type="Password" placeholder="New Passowrd" />
-                      <input style="margin-top:30px; width:390px; margin-left:30px; margin-bottom: 50px; " class="form-control" type="Password" placeholder="Confirm Password" />
-                  </div>
-              </form>
-      </div>
-      <center><button style="width:400px; height: 40px; margin-top: 30px; margin-bottom: 40px;" class="btn btn-danger">Save Changes</button></center>
-  </div>
 </div>
 
 
