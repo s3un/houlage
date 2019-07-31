@@ -7,7 +7,7 @@ p,h1,h2,h3,h4,h5,h6,a, label,button,td,th,select{
 }
 .bodytype   {
     height: 100vh;
-    background-image: url("/static/img/carscity.jpg");
+    background-image: url("/static/img/hrero.jpg");
     width: 100%;
     max-width: 100%;
     background-size: cover;
@@ -90,7 +90,7 @@ padding: 8px;
 /*button on home */
 .butall {
     margin-left: 100px;
-    margin-bottom: 5%;
+    margin-bottom: 20px;
 }
 
 .button {
@@ -280,7 +280,7 @@ padding: 8px;
     display: block;
     width: 32px;
     height: 32px;
-    border: 2px solid  #3da2de;
+    border: 2px solid  #ff090e;
     background-size: 14px auto;
     border-radius: 50%;
     z-index: 2;
