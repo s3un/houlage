@@ -37,7 +37,7 @@
         //     {
         //         $(".navbar").removeClass("addnavbar")
         //     }
-        // }); 
+        // });
 
         $(window).on('scroll', function(){
           if($(window).scrollTop()){
@@ -77,15 +77,15 @@
                    <a class="dropdown-toggle " data-toggle="dropdown" href="#"> {{request.user.username}}
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                       <li><a href="{% url 'dashboard' %}">Dashboard</a></li>  
+                       <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                       {% if user.is_staff%}
                         <li><a href="{% url 'auto_admin' %}">Admin</a></li>
                       {%endif%}
                       <li><a href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </li>
-                
-                
+
+
                  {% else %}
                  {# <li><a href="aboutus.html">About us</a></li> #}
                 <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>
@@ -93,10 +93,10 @@
                       <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'account_login' %}?next={{request.path}}">Login</a></button>
                       <button type="button" class="btn btn-danger"><a style="color:white;" href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></button>
                     </div>
-                
+
                  {% endif %}
-                </ul>  
-        </div>        
+                </ul>
+        </div>
     </div>
 </nav>
  <nav class="navbar navbar-fixed-top hidden-lg hidden-md hidden-sm">
@@ -119,22 +119,22 @@
                    <p class="text-danger"> Welcome</p><a class="dropdown-toggle " data-toggle="dropdown" href="#"> {{request.user.username}}
                     <span class="caret"></span></a>
                     <ul class="dropdown-menu center">
-                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li> 
+                    <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
                      {% if user.is_staff%}
                     <li><a href="{% url 'auto_admin' %}">Admin</a></li>
                     {%endif%}
                       <li><a href="{% url 'logout' %}">Logout</a></li>
                     </ul>
                 </li>
-                
-               
+
+
                  {% else %}
-                 <li><a href="aboutus.html">About us</a></li>
+
                 <li><a href="{% url 'contact' %}"class="{%if request.path == '/contact/' %}active{% endif %}">Contact us</a></li>             <div class="btn-group">
                       <button type="button" class="btn btn-primary"><a style="color:white;" href="{% url 'account_login' %}?next={{request.path}}">Login</a></button>
                       <button type="button" class="btn btn-danger"><a style="color:white;" href="{% url 'account_signup' %}?next={{request.path}}">SignUp</a></button>
                     </div>
-                
+
                  {% endif %}
       </ul>
     </div>
@@ -149,7 +149,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 panel-foot">
-         <div class="col-md-5 footcol1">   
+         <div class="col-md-5 footcol1">
            <div class="foottitle ">
               <center>Sign Up For Our Newsletter</center>
            </div>
@@ -157,7 +157,7 @@
            <input class="inputfoot" type="text" placeholder="enter your mail" >
          </div>
 
-         <div class="col-md-2"> 
+         <div class="col-md-2">
            <div class="foottitle2">
               <center>Our Services</center>
            </div>
@@ -165,10 +165,10 @@
           <a href=""><p style="margin-top:20px; margin-left: 40px; color:#ffffff;">Ride Personal Use</p></a>
           <a href=""><p style="margin-top:10px; margin-left: 40px; color:#ffffff;">Ride for Business</p></a>
           <a href=""><p style="margin-top:10px; margin-left: 40px; color:#ffffff;">Ride for Commercial use</p></a>
-          
+
         </div>
 
-        <div class="col-md-2"> 
+        <div class="col-md-2">
             <div class="foottitle2">
                 <center>Patient Info</center>
              </div>
@@ -178,7 +178,7 @@
              <a href=""><p style="margin-top:10px; margin-left: 47px; color:#ffffff;">Pay My Bill</p></a>
         </div>
 
-        <div class="col-md-2"> 
+        <div class="col-md-2">
             <div class="foottitle2">
                 <center>More on Clenviron</center>
              </div>
@@ -188,11 +188,11 @@
              <a href=""><p style="margin-top:10px; margin-left: 13px;  display: block; color:#ffffff;">About Clenviron</p></a>
              <a href=""><p style="margin-top:10px; margin-left: 13px;  display: block; color:#ffffff;">Contact Us</p></a>
         </div>
-         
-        <div class="col-md-1"> 
+
+        <div class="col-md-1">
 
         </div>
-        
+
     </div>
 
 
